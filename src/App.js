@@ -5,94 +5,85 @@ import './normalize.css'
 // import './App.css';
 
 
-const titleMessage =
-    <h1>Hi, welcome to the PF calculator 2000. Beep boop.</h1>
+const title = 'Hi, welcome to the PF calculator 2000. Beep boop.'
+const subtitle = 'Personal finance is the financial management which an individual or a family unit performs to budget, save, and spend monetary resources over time, taking into account various financial risks and future life events. When planning personal finances, the individual would consider the suitability to his or her needs of a range of banking products (checking, savings accounts, credit cards and consumer loans) or investment private equity, (stock market, bonds, mutual funds) and insurance (life insurance, health insurance, disability insurance) products or participation and monitoring of and- or employer-sponsored retirement plans, social security benefits, and income tax management'
+const salary = 'A wage is monetary compensation paid by an employer to an employee in exchange for work done.'
+const bonus = 'A bonus payment is usually made to employees in addition to their base salary as part of their wages or salary.'
+const aggregate = 'Together, guaranteed and variable pay comprise total cash compensation. The ratio of base salary to variable pay is referred to as the pay mix.'
 
-const TitleHeader = () =>
-    <div className="twelve columns">
-        {titleMessage}
-    </div>
+class Header extends Component {
+    render() {
+        return (
+            <div className="twelve columns">
+                <h1>{this.props.phrase}</h1>
+            </div>
+        );
+    }
+}
 
-const titleDescription =
-    <div><p><i>Personal finance is the financial management which an individual or a family unit performs to budget, save, and spend monetary resources over time, taking into account various financial risks and future life events. When planning personal finances, the individual would consider the suitability to his or her needs of a range of banking products (checking, savings accounts, credit cards and consumer loans) or investment private equity, (stock market, bonds, mutual funds) and insurance (life insurance, health insurance, disability insurance) products or participation and monitoring of and- or employer-sponsored retirement plans, social security benefits, and income tax management.</i></p></div>
+class HeaderDescription extends Component {
+    render() {
+        return (
+            <div className="twelve columns">
+                <div><p><i>{this.props.phrase}</i></p></div>
+            </div>
+        );
+    }
+}
 
-const TitleDescription = () =>
-    <div className="twelve columns" style={{textAlign: 'left'}}>
-        {titleDescription}
-    </div>
-
-const Title = () =>
-    <div className="row">
-        <TitleHeader />
-        <TitleDescription />
-    </div>
-
-// -SALARY--------------------------------------------------------------------
-
-const SalaryDescription = () =>
-    <div className="six columns" style={{textAlign: 'left'}}>
-        <p>A wage is monetary compensation paid by an employer to an employee in exchange for work done.</p>
-    </div>
-
-const SalaryInput = () =>
-    <div className="six columns">
-        <div className="row">
-            <Input message='Salary' />
-            <Amount dollars='$100,000' />
-        </div>
-    </div>
-
-// -BONUS---------------------------------------------------------------------
-
-const BonusInput = () =>
-    <div className="six columns">
-        <div className="row">
-            <Input message='Bonus'/>
-            <Amount dollars='$20,000' />
-        </div>
-    </div>
-
-const BonusDescription = () =>
-    <div className="six columns" style={{textAlign: 'left'}}>
-        <p>A bonus payment is usually made to employees in addition to their base salary as part of their wages or salary.</p>
-    </div>
-
-// -AGGREGATE-----------------------------------------------------------------
-
-const AggregateInput = () =>
-    <div className="six columns">
-        <div className="row">
-            <Output message='Aggregate' />
-            <Amount dollars='$120,000' />
-        </div>
-    </div>
-
-const AggregateDescription = () =>
-    <div className="six columns" style={{textAlign: 'left'}}>
-        <p>Together, guaranteed and variable pay comprise total cash compensation. The ratio of base salary to variable pay is referred to as the pay mix.</p>
-    </div>
-
-// -BODY----------------------------------------------------------------------
+class Title extends Component {
+    render() {
+        return (
+            <div className="row">
+                <Header phrase={title} />
+                <HeaderDescription phrase={subtitle}/>
+            </div>
+        )
+    }
+}
 
 const Body = () =>
     <div className="row">
         <h4>Inputs...</h4>
         <div className="row">
-            <InputRow description={<SalaryDescription />} input={<SalaryInput />} />
-            <InputRow description={<BonusDescription />} input={<BonusInput />} />
+            <Row description={<Description text={salary}/>} amount={<Combo message='Salary' dollars='$100,000' />} />
+            <Row description={<Description text={bonus}/>} amount={<Combo message='Bonus' dollars='$20,000' />} />
         </div>
         <h4>Outputs...</h4>
         <div className="row">
-            <InputRow description={<AggregateDescription />} input={<AggregateInput />} />
+            <Row description={<Description text={aggregate} />} amount={<Combo message='Aggregate' dollars='$120,000' />} />
         </div>
     </div>
 
-class InputRow extends Component {
+class Description extends Component {
+    render() {
+        return (
+            <div className="six columns" style={{textAlign: 'left'}}>
+                <p>{this.props.text}</p>
+            </div>
+        )
+    }
+}
+
+class Combo extends Component {
+    render () {
+        return (
+            <div className="six columns">
+                <div className="row">
+                    <Output message={this.props.message} />
+                    <Amount dollars={this.props.dollars} />
+                </div>
+            </div>
+        )
+    }
+}
+
+class Row extends Component {
     render() {
         return (
             <div className="row">
                 {this.props.description}
-                {this.props.input}
+                {this.props.amount}
             </div>
         )
     }
@@ -108,21 +99,12 @@ class Amount extends Component {
     }
 }
 
-class Input extends Component {
-    render() {
-        return (
-            <div className="six columns" style={{textAlign: 'left'}}>
-                <p><strong>Enter your {this.props.message}:</strong></p>
-            </div>
-        )
-    }
-}
 
 class Output extends Component {
     render() {
         return (
             <div className="six columns" style={{textAlign: 'left'}}>
-                <p><strong>Here is your {this.props.message}:</strong></p>
+                <p><strong>{this.props.message}:</strong></p>
             </div>
         )
     }
