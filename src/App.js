@@ -27,55 +27,28 @@ const Title = () =>
         <TitleDescription />
     </div>
 
-
 // -SALARY--------------------------------------------------------------------
-
-const SalaryValue = () =>
-    <div className="six columns" style={{textAlign: 'right'}}>
-        <p>$100,000</p>
-    </div>
-
-const SalaryPrompt = () =>
-    <div className="six columns">
-        <p><strong>Enter your Salary:</strong></p>
-    </div>
-
-const SalaryInput = () =>
-    <div className="six columns">
-        <div className="row">
-            <SalaryPrompt />
-            <SalaryValue />
-        </div>
-    </div>
 
 const SalaryDescription = () =>
     <div className="six columns" style={{textAlign: 'left'}}>
         <p>A wage is monetary compensation paid by an employer to an employee in exchange for work done.</p>
     </div>
 
-const SalaryRow = () =>
-    <div className="row">
-        <SalaryDescription />
-        <SalaryInput />
+const SalaryInput = () =>
+    <div className="six columns">
+        <div className="row">
+            <Input message='Salary' />
+            <Amount dollars='$100,000' />
+        </div>
     </div>
 
 // -BONUS---------------------------------------------------------------------
 
-const BonusValue = () =>
-    <div className="six columns" style={{textAlign: 'right'}}>
-        <p>$20,000</p>
-    </div>
-
-const BonusPrompt = () =>
-    <div className="six columns" style={{textAlign: 'left'}}>
-        <p><strong>Enter your Bonus:</strong></p>
-    </div>
-
 const BonusInput = () =>
     <div className="six columns">
         <div className="row">
-            <BonusPrompt />
-            <BonusValue />
+            <Input message='Bonus'/>
+            <Amount dollars='$20,000' />
         </div>
     </div>
 
@@ -84,29 +57,13 @@ const BonusDescription = () =>
         <p>A bonus payment is usually made to employees in addition to their base salary as part of their wages or salary.</p>
     </div>
 
-const BonusRow = () =>
-    <div className="row">
-        <BonusDescription />
-        <BonusInput />
-    </div>
-
 // -AGGREGATE-----------------------------------------------------------------
-
-const AggregateValue = () =>
-    <div className="six columns" style={{textAlign: 'right'}}>
-        <p>$120,000</p>
-    </div>
-
-const AggregatePrompt = () =>
-    <div className="six columns" style={{textAlign: 'left'}}>
-        <p><strong>Enter your Aggregate:</strong></p>
-    </div>
 
 const AggregateInput = () =>
     <div className="six columns">
         <div className="row">
-            <AggregatePrompt />
-            <AggregateValue />
+            <Output message='Aggregate' />
+            <Amount dollars='$120,000' />
         </div>
     </div>
 
@@ -115,36 +72,68 @@ const AggregateDescription = () =>
         <p>Together, guaranteed and variable pay comprise total cash compensation. The ratio of base salary to variable pay is referred to as the pay mix.</p>
     </div>
 
-const AggregateRow = () =>
-    <div className="row">
-        <AggregateDescription />
-        <AggregateInput />
-    </div>
-
-
 // -BODY----------------------------------------------------------------------
+
 const Body = () =>
     <div className="row">
         <h4>Inputs...</h4>
         <div className="row">
-            <SalaryRow />
-            <BonusRow />
+            <InputRow description={<SalaryDescription />} input={<SalaryInput />} />
+            <InputRow description={<BonusDescription />} input={<BonusInput />} />
         </div>
         <h4>Outputs...</h4>
         <div className="row">
-            <AggregateRow />
+            <InputRow description={<AggregateDescription />} input={<AggregateInput />} />
         </div>
     </div>
 
+class InputRow extends Component {
+    render() {
+        return (
+            <div className="row">
+                {this.props.description}
+                {this.props.input}
+            </div>
+        )
+    }
+}
+
+class Amount extends Component {
+    render() {
+        return (
+            <div className="six columns" style={{textAlign: 'right'}}>
+                <p>{this.props.dollars}</p>
+            </div>
+        )
+    }
+}
+
+class Input extends Component {
+    render() {
+        return (
+            <div className="six columns" style={{textAlign: 'left'}}>
+                <p><strong>Enter your {this.props.message}:</strong></p>
+            </div>
+        )
+    }
+}
+
+class Output extends Component {
+    render() {
+        return (
+            <div className="six columns" style={{textAlign: 'left'}}>
+                <p><strong>Here is your {this.props.message}:</strong></p>
+            </div>
+        )
+    }
+}
 
 class App extends Component {
     render() {
         return (
             <div className="container">
-                <row>
                 <Title />
                 <Body />
-                </row>
             </div>
         )
     }
