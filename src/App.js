@@ -62,39 +62,16 @@ const Body = () =>
     <div className="row">
         <h4>Please enter your inputs here...</h4>
         <div className="row">
-            <CalculationRow description={<DescriptionBox text={metrics.salary.description}/>} amount={<CalculationBox message={metrics.salary.name} dollars='$100,000' />} />
-            <CalculationRow description={<DescriptionBox text={metrics.bonus.description}/>} amount={<CalculationBox message={metrics.bonus.name} dollars='$20,000' />} />
+            <AppRow description={<AppRowLeftSection text={metrics.salary.description}/>} amount={<AppRowRightSection message={metrics.salary.name} dollars='$100,000' />} />
+            <AppRow description={<AppRowLeftSection text={metrics.bonus.description}/>} amount={<AppRowRightSection message={metrics.bonus.name} dollars='$20,000' />} />
         </div>
         <h4>Here are your personal finance metrics...</h4>
         <div className="row">
-            <CalculationRow description={<DescriptionBox text={metrics.totalCashCompensation.description} />} amount={<CalculationBox message={metrics.totalCashCompensation.name} dollars='$120,000' />} />
+            <AppRow description={<AppRowLeftSection text={metrics.totalCashCompensation.description} />} amount={<AppRowRightSection message={metrics.totalCashCompensation.name} dollars='$120,000' />} />
         </div>
     </div>
 
-class DescriptionBox extends Component {
-    render() {
-        return (
-            <div className="six columns" style={{textAlign: 'left'}}>
-                <p>{this.props.text}</p>
-            </div>
-        )
-    }
-}
-
-class CalculationBox extends Component {
-    render () {
-        return (
-            <div className="six columns">
-                <div className="row">
-                    <Output message={this.props.message} />
-                    <Amount dollars={this.props.dollars} />
-                </div>
-            </div>
-        )
-    }
-}
-
-class CalculationRow extends Component {
+class AppRow extends Component {
     render() {
         return (
             <div className="row">
@@ -105,7 +82,30 @@ class CalculationRow extends Component {
     }
 }
 
-class Amount extends Component {
+class AppRowLeftSection extends Component {
+    render() {
+        return (
+            <div className="six columns" style={{textAlign: 'left'}}>
+                <p>{this.props.text}</p>
+            </div>
+        )
+    }
+}
+
+class AppRowRightSection extends Component {
+    render () {
+        return (
+            <div className="six columns">
+                <div className="row">
+                    <SixColumnsLeftAlignedDiv message={this.props.message} />
+                    <SixColumnsRightAlignedDiv dollars={this.props.dollars} />
+                </div>
+            </div>
+        )
+    }
+}
+
+class SixColumnsRightAlignedDiv extends Component {
     render() {
         return (
             <div className="six columns" style={{textAlign: 'right'}}>
@@ -115,8 +115,7 @@ class Amount extends Component {
     }
 }
 
-
-class Output extends Component {
+class SixColumnsLeftAlignedDiv extends Component {
     render() {
         return (
             <div className="six columns" style={{textAlign: 'left'}}>
