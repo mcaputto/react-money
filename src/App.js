@@ -7,18 +7,68 @@ import './normalize.css'
 const data = {
     salary: {
         name: 'Salary',
+        value: '$100,000',
         description: 'A wage is monetary compensation paid by an employer to an employee in exchange for work done.',
-        amount: '$100,000',
     },
     bonus: {
         name: 'Bonus',
+        value: '$20,000',
         description: 'A bonus payment is usually made to employees in addition to their base salary as part of their wages or salary.',
-        amount: '$20,000',
     },
-    totalCashCompensation: {
-        name: 'Total cash compensation',
-        description: 'Together, guaranteed and variable pay comprise total cash compensation. The ratio of base salary to variable pay is referred to as the pay mix.',
-        amount: '$120,000',
+    grossIncome: {
+        name: 'Gross income',
+        value: '$120,000',
+        description: 'To do...',
+    },
+    deductions: {
+        name: 'Deductions',
+        value: '$ to do...',
+        description: 'To do...',
+    },
+    exemptions: {
+        name: 'Exemptions',
+        value: '$ to do...',
+        description: 'To do...',
+    },
+    adjustedGrossIncome: {
+        name: 'Adjusted gross income',
+        value: '$ to do...',
+        description: 'To do...',
+    },
+    pretaxInvestment: {
+        name: 'Pretax investment',
+        value: '$ to do...',
+        description: 'To do...',
+    },
+    taxableIncome: {
+        name: 'Taxable income',
+        value: '$ to do...',
+        description: 'To do...',
+    },
+    ficaTax: {
+        name: 'FICA tax',
+        value: '$ to do...',
+        description: 'To do...',
+    },
+    federalIncomeTax: {
+        name: 'Federal income tax',
+        value: '$ to do...',
+        description: 'To do...',
+    },
+    stateIncomeTax: {
+        name: 'State income tax',
+        value: '$ to do...',
+        description: 'To do...',
+    },
+    posttaxInvestment: {
+        name: 'Posttax investment',
+        value: '$ to do...',
+        description: 'To do...',
+    },
+    discretionaryIncome: {
+        name: 'Discretionary income',
+        value: '$ to do...',
+        description: 'To do...',
     },
 }
 
@@ -48,40 +98,40 @@ class Header extends Component {
 
 // -BODY----------------------------------------------------------------------
 
-const Body = () =>
-    <div className="row">
-        <div className="row">
-            <AppRow metricName={data.salary.name}
-                    metricValue={data.salary.amount}
-                    metricText={data.salary.description}
-            />
-            <AppRow metricName={data.bonus.name}
-                    metricValue={data.bonus.amount}
-                    metricText={data.bonus.description}
-            />
-            <AppRow metricName={data.totalCashCompensation.name}
-                    metricValue={data.totalCashCompensation.amount}
-                    metricText={data.totalCashCompensation.description}
+class Body extends Component {
+    render() {
+        return (
+            <div className="row">
+                {/* Iterate through object and generate multiple components */}
+                {Object.keys(data).map(key => (
+                    <Metric name={data[key].name}
+                            value={data[key].amount}
+                            description={data[key].description}
+                            key={key}
                     />
-        </div>
-    </div>
+                ))}
+            </div>
+        )
+    }
+}
 
-class AppRow extends Component {
+
+class Metric extends Component {
     render() {
         return (
             <div className="row">
                 <div className="one-half column">
                     <div className="row">
                         <div className="one-half column" style={{textAlign: 'left'}}>
-                            <p>{<strong>{this.props.metricName}</strong>}</p>
+                            <p><strong>{this.props.name}</strong></p>
                         </div>
                         <div className="one-half column" style={{textAlign: 'left'}}>
-                            <p>{this.props.metricValue}</p>
+                            <p>{this.props.value}</p>
                         </div>
                     </div>
                 </div>
                 <div className="one-half column" style={{textAlign: 'left'}}>
-                    <p>{this.props.metricText}</p>
+                    <p>{this.props.description}</p>
                 </div>
             </div>
         )
@@ -97,6 +147,7 @@ class App extends Component {
             <div className="container">
                 <Header />
                 <Body />
+                Made by <a href='https://github.com/mcaputto'>mcaputto.</a>
             </div>
         )
     }
