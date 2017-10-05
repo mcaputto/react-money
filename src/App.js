@@ -3,11 +3,6 @@ import './skeleton.css'
 import './normalize.css'
 
 //-DATA-----------------------------------------------------------------------
-const header = {
-    title: 'Hi, welcome to the PF calculator 2000. Beep boop.',
-    subtitle: 'Personal finance is the financial management which an individual or a family unit performs to budget, save, and spend monetary resources over time, taking into account various financial risks and future life events. When planning personal finances, the individual would consider the suitability to his or her needs of a range of banking products (checking, savings accounts, credit cards and consumer loans) or investment private equity, (stock market, bonds, mutual funds) and insurance (life insurance, health insurance, disability insurance) products or participation and monitoring of and- or employer-sponsored retirement plans, social security benefits, and income tax management',
-}
-
 const metrics = {
     salary: {
         name: 'Salary',
@@ -24,50 +19,75 @@ const metrics = {
 }
 // ---------------------------------------------------------------------------
 
-// -TITLE---------------------------------------------------------------------
-class Header extends Component {
-    render() {
-        return (
-            <div className="twelve columns">
-                <h1>{this.props.phrase}</h1>
-            </div>
-        );
-    }
+// -HEADER--------------------------------------------------------------------
+
+const header = {
+    title: 'Hi, welcome to the PF calculator 2000.',
+    subtitle: 'Personal finance is the financial management which an individual or a family unit performs to budget, save, and spend monetary resources over time, taking into account various financial risks and future life events.',
 }
 
-class HeaderDescription extends Component {
-    render() {
-        return (
-            <div className="twelve columns">
-                <div><p><i>{this.props.phrase}</i></p></div>
-            </div>
-        );
-    }
-}
-
-class Title extends Component {
+class WebsiteHeader extends Component {
     render() {
         return (
             <div className="row">
-                <Header phrase={header.title} />
-                <HeaderDescription phrase={header.subtitle}/>
+                <div className="row">
+                    <h1>{header.title}</h1>
+                </div>
+                <div className="row">
+                    <div><p>{header.subtitle}</p></div>
+                </div>
             </div>
         )
     }
 }
 // ---------------------------------------------------------------------------
-
 // -BODY----------------------------------------------------------------------
-const Body = () =>
+const WebsiteBody = () =>
     <div className="row">
         <h4>Please enter your inputs here...</h4>
         <div className="row">
-            <AppRow description={<AppRowLeftSection text={metrics.salary.description}/>} amount={<AppRowRightSection message={metrics.salary.name} dollars='$100,000' />} />
-            <AppRow description={<AppRowLeftSection text={metrics.bonus.description}/>} amount={<AppRowRightSection message={metrics.bonus.name} dollars='$20,000' />} />
+            <AppRow
+                description={
+                    <DescriptionArea
+                        text={metrics.salary.description}
+                    />
+                }
+                amount={
+                    <InputArea
+                        metricName={metrics.salary.name}
+                        metricValue='$100,000'
+                    />
+                }
+            />
+            <AppRow
+                description={
+                    <DescriptionArea
+                        text={metrics.bonus.description}
+                    />
+                }
+                amount={
+                    <InputArea
+                        metricName={metrics.bonus.name}
+                        metricValue='$20,000'
+                    />
+                }
+            />
         </div>
         <h4>Here are your personal finance metrics...</h4>
         <div className="row">
-            <AppRow description={<AppRowLeftSection text={metrics.totalCashCompensation.description} />} amount={<AppRowRightSection message={metrics.totalCashCompensation.name} dollars='$120,000' />} />
+            <AppRow
+                description={
+                    <DescriptionArea
+                        text={metrics.totalCashCompensation.description}
+                    />
+                }
+                amount={
+                    <InputArea
+                        metricName={metrics.totalCashCompensation.name}
+                        metricValue='$120,000'
+                    />
+                }
+            />
         </div>
     </div>
 
@@ -75,64 +95,53 @@ class AppRow extends Component {
     render() {
         return (
             <div className="row">
-                {this.props.description}
                 {this.props.amount}
+                {this.props.description}
             </div>
         )
     }
 }
 
-class AppRowLeftSection extends Component {
+class DescriptionArea extends Component {
     render() {
         return (
-            <div className="six columns" style={{textAlign: 'left'}}>
+            <div className="one-half column" style={{textAlign: 'left'}}>
                 <p>{this.props.text}</p>
             </div>
         )
     }
 }
 
-class AppRowRightSection extends Component {
+class InputArea extends Component {
     render () {
         return (
-            <div className="six columns">
+            <div className="one-half column">
                 <div className="row">
-                    <SixColumnsLeftAlignedDiv message={this.props.message} />
-                    <SixColumnsRightAlignedDiv dollars={this.props.dollars} />
+                    <SubInputArea text={<strong>{this.props.metricName}</strong>} />
+                    <SubInputArea text={this.props.metricValue} />
                 </div>
             </div>
         )
     }
 }
 
-class SixColumnsRightAlignedDiv extends Component {
+class SubInputArea extends Component {
     render() {
         return (
-            <div className="six columns" style={{textAlign: 'right'}}>
-                <p>{this.props.dollars}</p>
-            </div>
-        )
-    }
-}
-
-class SixColumnsLeftAlignedDiv extends Component {
-    render() {
-        return (
-            <div className="six columns" style={{textAlign: 'left'}}>
-                <p><strong>{this.props.message}:</strong></p>
+            <div className="one-half column" style={{textAlign: 'left'}}>
+                <p>{this.props.text}</p>
             </div>
         )
     }
 }
 // ---------------------------------------------------------------------------
-
 // -MOUNT---------------------------------------------------------------------
 class App extends Component {
     render() {
         return (
             <div className="container">
-                <Title />
-                <Body />
+                <WebsiteHeader />
+                <WebsiteBody />
             </div>
         )
     }
