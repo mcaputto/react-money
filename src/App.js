@@ -2,59 +2,59 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 const title = 'Hi, welcome to the PF calculator 2000.'
-const subtitle = 'Personal finance is the financial management which an individual or a family unit performs to budget, save, and spend monetary resources over time, taking into account various financial risks and future life events.'
+const subtitle = 'Use this web app to learn where your money is going...'
 const data = {
   salary: {
     name: 'Salary',
-    description: 'A wage is monetary compensation paid by an employer to an employee in exchange for work done.',
+    description: 'How much you make',
   },
   bonus: {
     name: 'Bonus',
-    description: 'A bonus payment is usually made to employees in addition to their base salary as part of their wages or salary.',
+    description: 'Cha ching!',
   },
   grossIncome: {
     name: 'Gross income',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id viverra libero. Quisque in sem sit amet ipsum feugiat tincidunt.',
+    description: 'Very nice.',
   },
   deductions: {
     name: 'Deductions',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id viverra libero. Quisque in sem sit amet ipsum feugiat tincidunt.',
+    description: 'That\'s it?',
   },
   exemptions: {
     name: 'Exemptions',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id viverra libero. Quisque in sem sit amet ipsum feugiat tincidunt.',
+    description: 'Wish there were more...',
   },
   adjustedGrossIncome: {
     name: 'Adjusted gross income',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id viverra libero. Quisque in sem sit amet ipsum feugiat tincidunt.',
+    description: 'The (in)famous AGI',
   },
   pretaxInvestment: {
-    name: 'Pretax investment',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id viverra libero. Quisque in sem sit amet ipsum feugiat tincidunt.',
+    name: 'Before-tax investments',
+    description: 'Max out that 401k, son!',
   },
   taxableIncome: {
     name: 'Taxable income',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id viverra libero. Quisque in sem sit amet ipsum feugiat tincidunt.',
+    description: 'Wish this was smaller',
   },
   ficaTax: {
     name: 'FICA tax',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id viverra libero. Quisque in sem sit amet ipsum feugiat tincidunt.',
+    description: 'Gotta take care of them old peeps',
   },
   federalIncomeTax: {
     name: 'Federal income tax',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id viverra libero. Quisque in sem sit amet ipsum feugiat tincidunt.',
+    description: 'Uncle Sam needs his money',
   },
   stateIncomeTax: {
     name: 'State income tax',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id viverra libero. Quisque in sem sit amet ipsum feugiat tincidunt.',
+    description: 'The state needs their share, of course',
   },
   posttaxInvestment: {
-    name: 'Posttax investment',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id viverra libero. Quisque in sem sit amet ipsum feugiat tincidunt.',
+    name: 'After-tax investments',
+    description: 'Max out that Roth IRA!',
   },
   discretionaryIncome: {
     name: 'Discretionary income',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id viverra libero. Quisque in sem sit amet ipsum feugiat tincidunt.',
+    description: 'That\'s it?',
   },
 }
 const footer = () =>
@@ -63,11 +63,12 @@ const footer = () =>
 class Header extends Component {
   render() {
     return [
-        <div><h1>{this.props.title}</h1></div>,
-        <div><p>{this.props.subtitle}</p></div>,
+      <div className="title">{this.props.title}</div>,
+      <div className="subtitle">{this.props.subtitle}</div>,
     ]
   }
 }
+
 Header.propTypes = {
   title: PropTypes.string,
   subtitle: PropTypes.string,
@@ -76,7 +77,8 @@ Header.propTypes = {
 class Metric extends Component {
   constructor(props) {
     super(props)
-    this.state = {value: ''}
+    // Need to lift this state up into generator()
+    this.state = {value: '',}
     // We create these to make the <input /> form a "controlled component"
     this.handleChange = this.handleChange.bind(this);
     // this.handleSubmit = this.handleSubmit.bind(this);
@@ -92,11 +94,12 @@ class Metric extends Component {
 
   render() {
     return (
-        <div>
-          <div><p><strong>{this.props.name}</strong></p></div>
-          <div><p><input type="number" value={this.state.value} onChange={this.handleChange} /></p></div>
-          <div><p>{this.props.description}</p></div>
-        </div>
+      <div>
+        <div><b>{this.props.name}</b></div>
+        <div>{this.props.description}</div>
+        <div><input type="number" value={this.state.value} onChange={this.handleChange} /></div>
+        <br/>
+      </div>
     )
   }
 }
@@ -107,22 +110,22 @@ Metric.propTypes = {
 }
 Metric.defaultProps = {
   name: 'Name goes here',
-  value: 0,
   description: 'Description goes here',
 }
 
 class Body extends Component {
   render() {
-    return [
-      <div>{this.props.items}</div>,
-    ]
+    return (
+      <div>{this.props.array}</div>
+    )
   }
 }
 Body.propTypes = {
-  items: PropTypes.array,
+  array: PropTypes.array,
 }
 
-const generateRow = () => Object.keys(data).map(key => (
+// Need to store the value state in here ("lift the state")
+const generateMetrics = () => Object.keys(data).map(key => (
   <Metric
     key={key}
     name={data[key].name}
@@ -136,10 +139,10 @@ class App extends Component {
     return (
       <div>
         {/*Warning ignored due to https://reactjs.org/blog/2017/09/26/react-v16.0.html*/}
-        <div><Header title={title} subtitle={subtitle} /></div>
+        <Header title={title} subtitle={subtitle} />
         {/*Warning ignored due to https://reactjs.org/blog/2017/09/26/react-v16.0.html*/}
-        <Body items={generateRow()} />
-        <div>{footer()}</div>
+        <Body array={generateMetrics()} />
+        {footer()}
       </div>
     )
   }
