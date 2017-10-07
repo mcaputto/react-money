@@ -14,7 +14,7 @@ const data = {
   },
   grossIncome: {
     name: 'Gross income',
-    description: 'Very nice.',
+    description: 'Very nice',
   },
   deductions: {
     name: 'Deductions',
@@ -74,6 +74,17 @@ Header.propTypes = {
   subtitle: PropTypes.string,
 }
 
+class Body extends Component {
+  render() {
+    return (
+      <div>{this.props.array}</div>
+    )
+  }
+}
+Body.propTypes = {
+  array: PropTypes.array,
+}
+
 class Metric extends Component {
   constructor(props) {
     super(props)
@@ -97,7 +108,7 @@ class Metric extends Component {
       <div>
         <div><b>{this.props.name}</b></div>
         <div>{this.props.description}</div>
-        <div><input type="number" value={this.state.value} onChange={this.handleChange} /></div>
+        <div><input type="number" value={this.props.value} onChange={this.handleChange} /></div>
         <br/>
       </div>
     )
@@ -113,17 +124,6 @@ Metric.defaultProps = {
   description: 'Description goes here',
 }
 
-class Body extends Component {
-  render() {
-    return (
-      <div>{this.props.array}</div>
-    )
-  }
-}
-Body.propTypes = {
-  array: PropTypes.array,
-}
-
 // Need to store the value state in here ("lift the state")
 const generateMetrics = () => Object.keys(data).map(key => (
   <Metric
@@ -134,13 +134,12 @@ const generateMetrics = () => Object.keys(data).map(key => (
   />
 ))
 
+// Warnings ignored due to https://reactjs.org/blog/2017/09/26/react-v16.0.html
 class App extends Component {
   render() {
     return (
       <div>
-        {/*Warning ignored due to https://reactjs.org/blog/2017/09/26/react-v16.0.html*/}
         <Header title={title} subtitle={subtitle} />
-        {/*Warning ignored due to https://reactjs.org/blog/2017/09/26/react-v16.0.html*/}
         <Body array={generateMetrics()} />
         {footer()}
       </div>
