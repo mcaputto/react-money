@@ -89,11 +89,27 @@ Header.propTypes = {
 }
 
 class Metric extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {value: ''}
+    // We create these to make the <input /> form a "controlled component"
+    this.handleChange = this.handleChange.bind(this);
+    // this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({value: event.target.value})
+  }
+  // handleSubmit(event) {
+  //   alert('A value was submitted: ' + this.state.value)
+  //   event.preventDefault()
+  // }
+
   render() {
     return (
         <div className="row">
           <div className="three columns"><p><strong>{this.props.name}</strong></p></div>
-          <div className="three columns"><p>{this.props.value}</p></div>
+          <div className="three columns"><p><input type="number" value={this.state.value} onChange={this.handleChange} /></p></div>
           <div className="six columns"><p>{this.props.description}</p></div>
         </div>
     )
