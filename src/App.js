@@ -72,19 +72,15 @@ const data = {
     description: 'To do...',
   },
 }
+const footer = () =>
+  <div className="twelve columns"><p>Made by <a href='https://github.com/mcaputto'>mcaputto</a></p></div>
 
 class Header extends Component {
   render() {
-    return (
-      <div className="row">
-        <div className="row">
-          <h1>{this.props.title}</h1>
-        </div>
-        <div className="row">
-          <div><p>{this.props.subtitle}</p></div>
-        </div>
-      </div>
-    )
+    return [
+        <div className="twelve columns"><h1>{this.props.title}</h1></div>,
+        <div className="twelve columns"><p>{this.props.subtitle}</p></div>,
+    ]
   }
 }
 Header.propTypes = {
@@ -95,17 +91,11 @@ Header.propTypes = {
 class Metric extends Component {
   render() {
     return (
-      <div>
-        <div className="three columns" style={{textAlign: 'left'}}>
-          <p><strong>{this.props.name}</strong></p>
+        <div className="row">
+          <div className="three columns"><p><strong>{this.props.name}</strong></p></div>
+          <div className="three columns"><p>{this.props.value}</p></div>
+          <div className="six columns"><p>{this.props.description}</p></div>
         </div>
-        <div className="three columns" style={{textAlign: 'left'}}>
-          <p>{this.props.value}</p>
-        </div>
-        <div className="six columns" style={{textAlign: 'left'}}>
-          <p>{this.props.description}</p>
-        </div>
-      </div>
     )
   }
 }
@@ -120,43 +110,35 @@ Metric.defaultProps = {
   description: 'Description goes here',
 }
 
-
 class Body extends Component {
   render() {
-    return (
-      <div className="row">
-        {this.props.item}
-      </div>
-    )
+    return [
+      <div className="row">{this.props.items}</div>,
+    ]
   }
 }
 Body.propTypes = {
-  item: PropTypes.array,
+  items: PropTypes.array,
 }
 
-const generateRow = () => {
-  return (
-    Object.keys(data).map(key => (
-      <Metric name={data[key].name}
-          value={data[key].value}
-          description={data[key].description}
-          key={key}
-      />
-    ))
-  )
-}
+const generateRow = () => Object.keys(data).map(key => (
+  <Metric
+    name={data[key].name}
+    value={data[key].value}
+    description={data[key].description}
+    key={key}
+  />
+))
 
 class App extends Component {
   render() {
     return (
       <div className="container">
-        <Header
-          title={title}
-          subtitle={subtitle}/>
-        <Body
-          item={generateRow()}
-        />
-        Made by <a href='https://github.com/mcaputto'>mcaputto</a>.
+        {/*Warning ignored due to https://reactjs.org/blog/2017/09/26/react-v16.0.html*/}
+        <div className="row"><Header title={title} subtitle={subtitle} /></div>
+        {/*Warning ignored due to https://reactjs.org/blog/2017/09/26/react-v16.0.html*/}
+        <Body items={generateRow()} />
+        <div className="row">{footer()}</div>
       </div>
     )
   }
