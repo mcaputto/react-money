@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-const title = 'Hi, welcome to the PF calculator 2000.'
-const subtitle = 'Use this web app to learn where your money is going...'
+const title = 'PF calculator'
+const subtitle = 'Learn where your money went'
 const data = {
   salary: {
     name: 'Salary',
