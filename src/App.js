@@ -117,7 +117,7 @@ class Metric extends Component {
 Metric.propTypes = {
   name: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  value: PropTypes.number.isRequired,
+  value: PropTypes.number,
 }
 Metric.defaultProps = {
   name: 'Name goes here',
@@ -129,7 +129,6 @@ const generateMetrics = () => Object.keys(data).map(key => (
   <Metric
     key={key}
     name={data[key].name}
-    value={data[key].value}
     description={data[key].description}
   />
 ))
