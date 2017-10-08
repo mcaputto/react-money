@@ -58,7 +58,7 @@ const data = {
   },
 }
 const footer = () =>
-  <div><p>Made by <a href='https://github.com/mcaputto'>mcaputto</a></p></div>
+  <div><p>Made by <a href='https://github.com/mcaputto'>mcto</a></p></div>
 
 class Header extends Component {
   render() {
