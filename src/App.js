@@ -3,35 +3,31 @@ import PropTypes from 'prop-types'
 
 const userInputsData = {
 	salary: {
-		name: 'Salary',
-		description: 'Annual earnings',
-	},
-	bonus: {
-		name: 'Bonus',
-		description: 'One-time cash bonus',
-	},
-	deductions: {
-		name: 'Deductions',
-		description: 'For tax year 2017 single taxpayers, this is $6,350 ',
-	},
-	exemptions: {
-		name: 'Exemptions',
-		description: 'For tax year 2016, this is $4,050',
+		name: 'Earnings',
+		description: 'Total cash compensation',
 	},
 	pretaxInvestment: {
 		name: 'Before-tax investments',
-		description: 'Max out that 401k, son!',
+		description: 'Max out that 401k!',
 	},
 	posttaxInvestment: {
 		name: 'After-tax investments',
 		description: 'Max out that Roth IRA!',
+	},
+	deductions: {
+		name: 'Deductions',
+		description: 'Default is $6,350',
+	},
+	exemptions: {
+		name: 'Exemptions',
+		description: 'Default is $4,050',
 	},
 }
 
 class Body extends Component {
 	render() {
 		return [
-			<div className='container'>{this.props.array}</div>,
+			<div className='column'>{this.props.array}</div>,
 		]
 	}
 }
@@ -92,25 +88,41 @@ const generateUserInputRows = () => Object.keys(userInputsData).map(key => (
 class App extends Component {
 	render() {
 		return [
-			<h1 className='title'>Simple finance calculator</h1>,
+			<h1 className='title'>Simple finance</h1>,
 			<p className='subtitle'>A financial calculator for the rest of us</p>,
-
-			<p>Enter your earnings and savings below:</p>,
-			<br/>,
-			<Body array={generateUserInputRows()} />,
-			<br/>,
-
+			<p>Hi, I'm a computer program running in your browser. All calculations are being performed client-side using your browser's JavaScript interpreter. Absolutely no data is being stored online. In fact, you could turn off your internet connection, right now, without any interruptions to my functionality. I'm here to help you learn about your finances... please fill out the text forms below to learn more!</p>,
+			<div className="columns">
+					<div className="column">
+						<br/>
+						<Body array={generateUserInputRows()} />
+						<br/>
+					</div>
+					<div className="column">
+						{/* TODO: show the state of child components
+						<br/>
+						<p>You entered the following:</p>
+						<p>Salary: </p>
+						<p>Bonus: </p>
+						<p>Deductions: </p>
+						<p>Exemptions: </p>
+						<p>Before-tax investments: </p>
+						<p>After-tax investments: </p>*/}
+					</div>
+			</div>,
 			<footer className='footer'>
 				<div className='container'>
 					<div className='content has-text-centered'>
-						<p>
-							<strong>Simple finance</strong> made by <a href='https://github.com/mcaputto'>mcto</a>
-						</p>
-						<p>
-							<a className='icon' href='https://github.com/mcaputto'>
-								<i className='fa fa-github'></i>
-							</a>
-						</p>
+						<p><strong>Simple finance</strong></p>
+						<p>Made with care by <a href='https://github.com/mcaputto'>mcto</a></p>
+						<p>Front end stack includes:</p>
+						<a href='http://www.ecma-international.org/ecma-262/6.0/index.html'>ES6</a><br/>
+						<a href='http://babeljs.io'>Babel</a><br/>
+						<a href='https://eslint.org'>ESLint</a><br/>
+						<a href='https://nodejs.org/en/'>Node</a><br/>
+						<a href='https://www.npmjs.com'>NPM</a><br/>
+						<a href='https://yarnpkg.com/en/'>Yarn</a><br/>
+						<a href='https://reactjs.org'>React</a><br/>
+						<a href='https://webpack.github.io/'>Webpack</a><br/>
 					</div>
 				</div>
 			</footer>,
