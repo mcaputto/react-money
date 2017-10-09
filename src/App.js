@@ -90,7 +90,7 @@ class App extends Component {
     return [
       <h1 className='title'>Simple finance</h1>,
       <p className='subtitle'>A financial calculator for the rest of us</p>,
-      <p>Hi, I'm a computer program running in your browser. All calculations are being performed client-side using your browser's JavaScript interpreter. Absolutely no data is being stored online. In fact, you could turn off your internet connection, right now, without any interruptions to my functionality. I'm here to help you learn about your finances... please fill out the text forms below to learn more!</p>,
+      <p>Hi, I'm a computer program running in your browser. All calculations are being performed client-side using your browser's JavaScript interpreter. Absolutely no data is being stored online. In fact, you could turn off your internet connection, right now, without any interruptions to my functionality. I'm here to help you learn about your finances... please fill out the text forms below to see what I can do!</p>,
       <div className="columns">
           <div className="column">
             <Body array={generateUserInputRows()} />
@@ -111,8 +111,7 @@ class App extends Component {
         <div className='container'>
           <div className='content has-text-centered'>
             <p><strong>Simple finance</strong></p>
-            <p>Made with care by <a href='https://github.com/mcaputto'>mcto</a></p>
-            <p>Front end stack includes:</p>
+            <p>Made by <a href='https://github.com/mcaputto'>mcto</a></p>
             <a href='https://nodejs.org/en/'>Node</a><br/>
             <a href='https://www.npmjs.com'>NPM</a><br/>
             <a href='https://yarnpkg.com/en/'>Yarn</a><br/>
