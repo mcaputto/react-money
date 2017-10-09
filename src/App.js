@@ -2,15 +2,15 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 const userInputsData = {
-  salary: {
+  earnings: {
     name: 'Earnings',
     description: 'Total cash compensation',
   },
-  pretaxInvestment: {
+  before: {
     name: 'Before-tax investments',
     description: 'Max out that 401k!',
   },
-  posttaxInvestment: {
+  after: {
     name: 'After-tax investments',
     description: 'Max out that Roth IRA!',
   },
@@ -24,32 +24,121 @@ const userInputsData = {
   },
 }
 
-class Body extends Component {
-  render() {
-    return (
-      <div className='column'>{this.props.array}</div>
-    )
-  }
-}
-Body.propTypes = {
-  array: PropTypes.array,
-}
-
-class Metric extends Component {
+class Calculator extends Component {
   constructor(props) {
     super(props)
-    this.state = {}
-    this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleEarningsChange = this.handleEarningsChange.bind(this)
+    this.handlePreChange = this.handlePreChange.bind(this)
+    this.handleAfterChange = this.handleAfterChange.bind(this)
+    this.handleEarningsChange = this.handleEarningsChange.bind(this)
+    this.handleEarningsChange = this.handleEarningsChange.bind(this)
+    this.state = {
+      earnings: '',
+      before: '',
+      after: '',
+      deductions: '',
+      exemptions: '',
+      agi: '',
+    }
   }
 
-  handleInputChange(event) {
-    this.setState({
-      value: event.target.value
-    })
+  handleEarningsChange(earnings) {
+    this.setState({earnings})
+  }
+  handlePreChange(before) {
+    this.setState({before})
+  }
+  handleAfterChange(after) {
+    this.setState({after})
+  }
+  handleDeductionsChange(deductions) {
+    this.setState({deductions})
+  }
+  handleExemptionsChange(exemptions) {
+    this.setState({exemptions})
   }
 
   render() {
-// <div> debug: this.state.value is {this.state.value}
+    const earnings = this.state.earnings
+    const before = this.state.before
+    const after = this.state.after
+    const deductions = this.state.deductions
+    const exemptions = this.state.exemptions
+
+    const agi = earnings - deductions - exemptions
+
+    return [
+      <div className="column is-one-third">
+        <h2 className="title is-2">The basics</h2>
+        <ValueInput
+          name={userInputsData.earnings.name}
+          description={userInputsData.earnings.description}
+          onPropChange={this.handleEarningsChange}
+        />
+        <ValueInput
+          name={userInputsData.before.name}
+          description={userInputsData.before.description}
+          onPropChange={this.handlePreChange}
+        />
+        <ValueInput
+          name={userInputsData.after.name}
+          description={userInputsData.after.description}
+          onPropChange={this.handleAfterChange}
+        />
+        <ValueInput
+          name={userInputsData.deductions.name}
+          description={userInputsData.deductions.description}
+          onPropChange={this.handleDeductionsChange}
+        />
+        <ValueInput
+          name={userInputsData.exemptions.name}
+          description={userInputsData.exemptions.description}
+          onPropChange={this.handleExemptionsChange}
+        />
+      </div>,
+      <div className="column">
+        <h2 className="title is-2">Your results</h2>
+        <p>According to my super smart computer brain...</p>
+        <br/>
+        <ul>
+          <li>Your <strong>gross income</strong> is:&nbsp;</li>
+          <li>Your <strong>adjusted gross income</strong> is:&nbsp;</li>
+          <li>Your <strong>taxable income</strong> is:&nbsp;</li>
+          <br/>
+          <li>Your <strong>FICA tax expense</strong> is:&nbsp;</li>
+          <li>Your <strong>federal income tax expense</strong> is:&nbsp;</li>
+          <li>Your <strong>state income tax expense</strong> is:&nbsp;</li>
+          <br/>
+          <li>Your <strong>effective FICA tax rate</strong> is:&nbsp;</li>
+          <li>Your <strong>effective federal income tax rate</strong> is:&nbsp;</li>
+          <li>Your <strong>effective state income tax rate</strong> is:&nbsp;</li>
+          <br/>
+          <li>Your <strong>net income spend percentage</strong> is:&nbsp;</li>
+          <li>Your <strong>net income save percentage</strong> is:&nbsp;</li>
+          <li>Your <strong>net income tax percentage</strong> is:&nbsp;</li>
+          <br/>
+          <li>Your <strong>gross income spend percentage</strong> is:&nbsp;</li>
+          <li>Your <strong>gross income save percentage</strong> is:&nbsp;</li>
+        </ul>
+      </div>,
+    ]
+  }
+}
+
+// TODO: validateInput() -> only accept positive values
+class ValueInput extends Component {
+  constructor(props) {
+    super(props)
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(e) {
+    this.props.onPropChange(e.target.value)
+  }
+
+  render() {
+    const value = this.props.value
+
     return (
       <div className='field'>
         <label className='label'>{this.props.name}</label>
@@ -57,8 +146,9 @@ class Metric extends Component {
         <span className='icon is-small is-left'><i className='fa fa-money'></i></span>
           <input className='input is primary'
             placeholder='Enter your value here...'
-            type='text'
-            onChange={this.handleInputChange}
+            type='number'
+            value={value}
+            onChange={this.handleChange}
           />
         </div>
         <p className='help'>{this.props.description}</p>
@@ -66,46 +156,39 @@ class Metric extends Component {
     )
   }
 }
-Metric.propTypes = {
-  name: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  // value: PropTypes.number,
-}
-Metric.defaultProps = {
-  name: 'Name goes here',
-  description: 'Description goes here',
-}
 
+// TODO: reimplement this...
 const generateUserInputRows = () => Object.keys(userInputsData).map(key => (
-  <Metric
+  <ValueInput
     key={key}
     name={userInputsData[key].name}
     description={userInputsData[key].description}
+    onPropChange={this.handlePropChange}
   />
 ))
+
+// TODO: this whole column
+class Results extends Component {
+  render () {
+    return (
+      <div>
+        Based on the information provided, here is what computer-brain learned...
+        Your gross income is {}
+      </div>
+    )
+  }
+}
 
 // Warnings ignored due to https://reactjs.org/blog/2017/09/26/react-v16.0.html
 class App extends Component {
   render() {
     return [
-      <h1 className='title'>Simple finance</h1>,
-      <p className='subtitle'>A financial calculator for the rest of us</p>,
+      <h1 className='title is-1'>Simple finance</h1>,
+      <p className='subtitle is-1'>A financial calculator for the rest of us</p>,
       <p>Hi, I'm a computer program running in your browser. All calculations are being performed client-side using your browser's JavaScript interpreter. Absolutely no data is being stored online. In fact, you could turn off your internet connection, right now, without any interruptions to my functionality. I'm here to help you learn about your finances... please fill out the text forms below to see what I can do!</p>,
+      <p><br/></p>,
       <div className="columns">
-          <div className="column">
-            <Body array={generateUserInputRows()} />
-          </div>
-          <div className="column">
-            {/* TODO: show the state of child components
-            <br/>
-            <p>You entered the following:</p>
-            <p>Salary: </p>
-            <p>Bonus: </p>
-            <p>Deductions: </p>
-            <p>Exemptions: </p>
-            <p>Before-tax investments: </p>
-            <p>After-tax investments: </p>*/}
-          </div>
+        <Calculator />
       </div>,
       <footer className='footer'>
         <div className='container'>
