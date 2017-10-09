@@ -167,18 +167,6 @@ const generateUserInputRows = () => Object.keys(userInputsData).map(key => (
   />
 ))
 
-// TODO: this whole column
-class Results extends Component {
-  render () {
-    return (
-      <div>
-        Based on the information provided, here is what computer-brain learned...
-        Your gross income is {}
-      </div>
-    )
-  }
-}
-
 // Warnings ignored due to https://reactjs.org/blog/2017/09/26/react-v16.0.html
 class App extends Component {
   render() {
