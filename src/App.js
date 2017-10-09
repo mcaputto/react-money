@@ -26,9 +26,9 @@ const userInputsData = {
 
 class Body extends Component {
   render() {
-    return [
-      <div className='column'>{this.props.array}</div>,
-    ]
+    return (
+      <div className='column'>{this.props.array}</div>
+    )
   }
 }
 Body.propTypes = {
@@ -93,9 +93,7 @@ class App extends Component {
       <p>Hi, I'm a computer program running in your browser. All calculations are being performed client-side using your browser's JavaScript interpreter. Absolutely no data is being stored online. In fact, you could turn off your internet connection, right now, without any interruptions to my functionality. I'm here to help you learn about your finances... please fill out the text forms below to learn more!</p>,
       <div className="columns">
           <div className="column">
-            <br/>
             <Body array={generateUserInputRows()} />
-            <br/>
           </div>
           <div className="column">
             {/* TODO: show the state of child components
