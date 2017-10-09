@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 
 const userInputsData = {
   earnings: {
@@ -64,8 +63,6 @@ class Calculator extends Component {
     const after = this.state.after
     const deductions = this.state.deductions
     const exemptions = this.state.exemptions
-
-    const agi = earnings - deductions - exemptions
 
     return [
       <div className="column is-one-third">
