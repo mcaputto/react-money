@@ -74,7 +74,7 @@ class Calculator extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    let mariano = 'awesome'
+    // todo
   }
 
   _handleEarningsChange = (value) => {
@@ -137,7 +137,7 @@ class Calculator extends Component {
           <li>Your <strong>adjusted gross income</strong> is: {this.state.earnings - this.state.deductions - this.state.exemptions}</li>
           <li>Your <strong>taxable income</strong> is: {this.state.earnings - this.state.deductions - this.state.exemptions - this.state.before}</li>
           <br/>
-          <li>Your <strong>FICA tax expense</strong> is:</li>
+          <li>Your <strong>FICA tax expense</strong> is:{this.state.earnings  * (.0145 +.062)}</li>
           <li>Your <strong>federal income tax expense</strong> is:</li>
           <li>Your <strong>state income tax expense</strong> is:</li>
           <br/>
