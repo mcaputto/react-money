@@ -28,23 +28,24 @@ const userInputsData = {
 class Form extends Component {
   constructor(props) {
     super(props)
-    this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleChange = this.handleChange.bind(this);
     this.state = {
       amount: ''
     }
   }
 
-  handleInputChange(event) {
-    this.setState({
-      amount: event.target.value
-    })
+  handleChange(event) {
+    // We can reuse handleChange() by adding a name='' property to each form
+    let change = {}
+    change[event.target.name] = event.target.value
+    this.setState(change)
   }
 
   render() {
     const placeholder = 'Enter here...'
     const title = this.props.title
     const description = this.props.description
-    const handleInputChange=this.handleInputChange
+    const handleChange=this.handleChange
 
     return (
       <div className='field'>
@@ -52,10 +53,12 @@ class Form extends Component {
         <div className='control has-icons-left'>
         <span className='icon is-small is-left'><i className='fa fa-money'></i></span>
           <input className='input is primary'
-            placeholder={placeholder}
+            name='amount'
             type='number'
+            placeholder={placeholder}
             value={this.state.amount}
-            onChange={handleInputChange}/>
+            onChange={handleChange}
+          />
         </div>
         <p className='help'>{description}</p>
       </div>
