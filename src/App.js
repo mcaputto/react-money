@@ -5,7 +5,7 @@ import React, { Component } from 'react'
 const userInputsData = {
   earnings: {
     title: 'Earnings',
-    description: 'Include all cash compensation',
+    description: 'Include all cash compensation.',
   },
   before: {
     title: 'Before-tax savings',
@@ -13,15 +13,15 @@ const userInputsData = {
   },
   after: {
     title: 'After-tax savings',
-    description: 'Roth 401(k), Roth 403(b), Roth 457(b), Roth IRA, and everything else',
+    description: 'Roth 401(k), Roth 403(b), Roth 457(b), Roth IRA, taxable brokerage accounts, etc.',
   },
   deductions: {
     title: 'Deductions',
-    description: 'Standard is $6,350 for single and for married filing separately, $9,350 head of household, and $12,700 for married filing jointly and for qualifying surviving spouse'
+    description: 'Standard is $6,350 for single and for married filing separately, $9,350 head of household, and $12,700 for married filing jointly and for qualifying surviving spouse.'
   },
   exemptions: {
     title: 'Exemptions',
-    description: 'Total possible is $4,050 per person',
+    description: 'Personal exemption is $4,050.',
   },
 }
 
@@ -87,11 +87,11 @@ class Calculator extends Component {
   render() {
     return [
       <div className="column is-one-third">
-        <h2 className="title is-2">The basics</h2>
+        <h2 className="title is-2">Situation</h2>
         <Forms />
       </div>,
       <div className="column">
-        <h2 className="title is-2">Your results</h2>
+        <h2 className="title is-2">Outcome</h2>
         <p>According to my super smart computer brain...</p>
         <br/>
         <ul>
