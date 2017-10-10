@@ -25,14 +25,6 @@ const userInputsData = {
   },
 }
 
-const Forms = () => Object.keys(userInputsData).map(key => (
-  <Form
-    key={key}
-    title={userInputsData[key].title}
-    description={userInputsData[key].description}
-  />
-))
-
 class Form extends Component {
   constructor(props) {
     super(props)
@@ -70,6 +62,14 @@ class Form extends Component {
     )
   }
 }
+
+const Forms = () => Object.keys(userInputsData).map(key => (
+  <Form
+    key={key}
+    title={userInputsData[key].title}
+    description={userInputsData[key].description}
+  />
+))
 
 class Calculator extends Component {
   constructor(props) {
