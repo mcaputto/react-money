@@ -26,96 +26,131 @@ const userInputsData = {
 }
 
 class Form extends Component {
-  constructor(props) {
-    super(props)
-    this.handleChange = this.handleChange.bind(this);
-    this.state = {
-      amount: ''
-    }
-  }
-
-  handleChange(event) {
-    // We can reuse handleChange() by adding a name='' property to each form
-    let change = {}
-    change[event.target.name] = event.target.value
-    this.setState(change)
-  }
+  onChange = (e) => {
+    this.setState({value: e.target.value});
+    this.props.onChange(e.target.value);
+  };
 
   render() {
     const placeholder = 'Enter here...'
-    const title = this.props.title
-    const description = this.props.description
-    const handleChange=this.handleChange
 
     return (
       <div className='field'>
-        <label className='label'>{title}</label>
+        <label className='label'>{this.props.title}</label>
         <div className='control has-icons-left'>
         <span className='icon is-small is-left'><i className='fa fa-money'></i></span>
           <input className='input is primary'
             name='amount'
             type='number'
             placeholder={placeholder}
-            value={this.state.amount}
-            onChange={handleChange}
+            value={this.props.propsValue}
+            onChange={this.onChange}
           />
         </div>
-        <p className='help'>{description}</p>
+        <p className='help'>{this.props.description}</p>
       </div>
     )
   }
 }
 
-const Forms = () => Object.keys(userInputsData).map(key => (
-  <Form
-    key={key}
-    title={userInputsData[key].title}
-    description={userInputsData[key].description}
-  />
-))
+// const Forms = () => Object.keys(userInputsData).map(key => (
+//   <Form
+//     key={key}
+//     title={userInputsData[key].title}
+//     description={userInputsData[key].description}
+//   />
+// ))
 
 class Calculator extends Component {
   constructor(props) {
     super(props)
-    this.handleChange = this.handleChange.bind(this)
     this.state = {
-      value: '',
+      earnings: '',
+      before: '',
+      after: '',
+      deductions: '',
+      exemptions: '',
     }
   }
 
-  handleChange(value) {
-    this.setState({value})
+  componentDidUpdate(prevProps, prevState) {
+    let mariano = 'awesome'
+  }
+
+  _handleEarningsChange = (value) => {
+    this.setState({earnings: value})
+  }
+  _handleBeforeChange = (value) => {
+    this.setState({before: value})
+  }
+  _handleAfterChange = (value) => {
+    this.setState({after: value})
+  }
+  _handleDeductionsChange = (value) => {
+    this.setState({deductions: value})
+  }
+  _handleExemptionsChange = (value) => {
+    this.setState({exemptions: value})
   }
 
   render() {
     return [
       <div className="column is-one-third">
         <h2 className="title is-2">Situation</h2>
-        <Forms />
+        <Form
+          title={userInputsData['earnings'].title}
+          description={userInputsData['earnings'].description}
+          propsValue={this.state.earnings}
+          onChange={this._handleEarningsChange}
+        />
+        <Form
+          title={userInputsData['before'].title}
+          description={userInputsData['before'].description}
+          propsValue={this.state.before}
+          onChange={this._handleBeforeChange}
+        />
+        <Form
+          title={userInputsData['after'].title}
+          description={userInputsData['after'].description}
+          propsValue={this.state.after}
+          onChange={this._handleAfterChange}
+        />
+        <Form
+          title={userInputsData['deductions'].title}
+          description={userInputsData['deductions'].description}
+          propsValue={this.state.deductions}
+          onChange={this._handleDeductionsChange}
+        />
+        <Form
+          title={userInputsData['exemptions'].title}
+          description={userInputsData['exemptions'].description}
+          propsValue={this.state.exemptions}
+          onChange={this._handleExemptionsChange}
+        />
       </div>,
       <div className="column">
         <h2 className="title is-2">Outcome</h2>
         <p>According to my super smart computer brain...</p>
         <br/>
         <ul>
-          <li>Your <strong>gross income</strong> is:&nbsp;</li>
-          <li>Your <strong>adjusted gross income</strong> is:&nbsp;</li>
-          <li>Your <strong>taxable income</strong> is:&nbsp;</li>
+          <li>Your <strong>gross income</strong> is: {this.state.earnings}</li>
+          <li>Your <strong>adjusted gross income</strong> is: {this.state.earnings - this.state.deductions - this.state.exemptions}</li>
+          <li>Your <strong>taxable income</strong> is: {this.state.earnings - this.state.deductions - this.state.exemptions - this.state.before}</li>
           <br/>
-          <li>Your <strong>FICA tax expense</strong> is:&nbsp;</li>
-          <li>Your <strong>federal income tax expense</strong> is:&nbsp;</li>
-          <li>Your <strong>state income tax expense</strong> is:&nbsp;</li>
+          <li>Your <strong>FICA tax expense</strong> is:</li>
+          <li>Your <strong>federal income tax expense</strong> is:</li>
+          <li>Your <strong>state income tax expense</strong> is:</li>
           <br/>
-          <li>Your <strong>effective FICA tax rate</strong> is:&nbsp;</li>
-          <li>Your <strong>effective federal income tax rate</strong> is:&nbsp;</li>
-          <li>Your <strong>effective state income tax rate</strong> is:&nbsp;</li>
+          <li>Your <strong>effective FICA tax rate</strong> is:</li>
+          <li>Your <strong>effective federal income tax rate</strong> is:</li>
+          <li>Your <strong>effective state income tax rate</strong> is:</li>
           <br/>
-          <li>Your <strong>net income spend percentage</strong> is:&nbsp;</li>
-          <li>Your <strong>net income save percentage</strong> is:&nbsp;</li>
-          <li>Your <strong>net income tax percentage</strong> is:&nbsp;</li>
+          <li>Your <strong>net income spend percentage</strong> is:</li>
+          <li>Your <strong>net income save percentage</strong> is:</li>
+          <li>Your <strong>net income tax percentage</strong> is:</li>
           <br/>
-          <li>Your <strong>gross income spend percentage</strong> is:&nbsp;</li>
-          <li>Your <strong>gross income save percentage</strong> is:&nbsp;</li>
+          <li>Your <strong>gross income spend percentage</strong> is:</li>
+          <li>Your <strong>gross income save percentage</strong> is:</li>
         </ul>
       </div>,
     ]
