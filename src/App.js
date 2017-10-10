@@ -1,97 +1,94 @@
+// TODO: validateInput() -> only accept positive values
+
 import React, { Component } from 'react'
 
 const userInputsData = {
   earnings: {
-    name: 'Earnings',
-    description: 'Total cash compensation',
+    title: 'Earnings',
+    description: 'Include all cash compensation',
   },
   before: {
-    name: 'Before-tax investments',
-    description: 'Max out that 401k!',
+    title: 'Before-tax savings',
+    description: '401(a), 401(k), 403(b), 457, 529, HSA, IRA, TSP, etc. ',
   },
   after: {
-    name: 'After-tax investments',
-    description: 'Max out that Roth IRA!',
+    title: 'After-tax savings',
+    description: 'Roth 401(k), Roth 403(b), Roth 457(b), Roth IRA, and everything else',
   },
   deductions: {
-    name: 'Deductions',
-    description: 'Default is $6,350',
+    title: 'Deductions',
+    description: 'Standard is $6,350 for single and for married filing separately, $9,350 head of household, and $12,700 for married filing jointly and for qualifying surviving spouse'
   },
   exemptions: {
-    name: 'Exemptions',
-    description: 'Default is $4,050',
+    title: 'Exemptions',
+    description: 'Total possible is $4,050 per person',
   },
+}
+
+const Forms = () => Object.keys(userInputsData).map(key => (
+  <Form
+    key={key}
+    title={userInputsData[key].title}
+    description={userInputsData[key].description}
+  />
+))
+
+class Form extends Component {
+  constructor(props) {
+    super(props)
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.state = {
+      amount: ''
+    }
+  }
+
+  handleInputChange(event) {
+    this.setState({
+      amount: event.target.value
+    })
+  }
+
+  render() {
+    const placeholder = 'Enter here...'
+    const title = this.props.title
+    const description = this.props.description
+    const handleInputChange=this.handleInputChange
+
+    return (
+      <div className='field'>
+        <label className='label'>{title}</label>
+        <div className='control has-icons-left'>
+        <span className='icon is-small is-left'><i className='fa fa-money'></i></span>
+          <input className='input is primary'
+            placeholder={placeholder}
+            type='number'
+            value={this.state.amount}
+            onChange={handleInputChange}/>
+        </div>
+        <p className='help'>{description}</p>
+      </div>
+    )
+  }
 }
 
 class Calculator extends Component {
   constructor(props) {
     super(props)
-    this.handleEarningsChange = this.handleEarningsChange.bind(this)
-    this.handlePreChange = this.handlePreChange.bind(this)
-    this.handleAfterChange = this.handleAfterChange.bind(this)
-    this.handleEarningsChange = this.handleEarningsChange.bind(this)
-    this.handleEarningsChange = this.handleEarningsChange.bind(this)
+    this.handleChange = this.handleChange.bind(this)
     this.state = {
-      earnings: '',
-      before: '',
-      after: '',
-      deductions: '',
-      exemptions: '',
-      agi: '',
+      value: '',
     }
   }
 
-  handleEarningsChange(earnings) {
-    this.setState({earnings})
-  }
-  handlePreChange(before) {
-    this.setState({before})
-  }
-  handleAfterChange(after) {
-    this.setState({after})
-  }
-  handleDeductionsChange(deductions) {
-    this.setState({deductions})
-  }
-  handleExemptionsChange(exemptions) {
-    this.setState({exemptions})
+  handleChange(value) {
+    this.setState({value})
   }
 
   render() {
-    const earnings = this.state.earnings
-    const before = this.state.before
-    const after = this.state.after
-    const deductions = this.state.deductions
-    const exemptions = this.state.exemptions
-
     return [
       <div className="column is-one-third">
         <h2 className="title is-2">The basics</h2>
-        <ValueInput
-          name={userInputsData.earnings.name}
-          description={userInputsData.earnings.description}
-          onPropChange={this.handleEarningsChange}
-        />
-        <ValueInput
-          name={userInputsData.before.name}
-          description={userInputsData.before.description}
-          onPropChange={this.handlePreChange}
-        />
-        <ValueInput
-          name={userInputsData.after.name}
-          description={userInputsData.after.description}
-          onPropChange={this.handleAfterChange}
-        />
-        <ValueInput
-          name={userInputsData.deductions.name}
-          description={userInputsData.deductions.description}
-          onPropChange={this.handleDeductionsChange}
-        />
-        <ValueInput
-          name={userInputsData.exemptions.name}
-          description={userInputsData.exemptions.description}
-          onPropChange={this.handleExemptionsChange}
-        />
+        <Forms />
       </div>,
       <div className="column">
         <h2 className="title is-2">Your results</h2>
@@ -121,48 +118,6 @@ class Calculator extends Component {
     ]
   }
 }
-
-// TODO: validateInput() -> only accept positive values
-class ValueInput extends Component {
-  constructor(props) {
-    super(props)
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  handleChange(e) {
-    this.props.onPropChange(e.target.value)
-  }
-
-  render() {
-    const value = this.props.value
-
-    return (
-      <div className='field'>
-        <label className='label'>{this.props.name}</label>
-        <div className='control has-icons-left'>
-        <span className='icon is-small is-left'><i className='fa fa-money'></i></span>
-          <input className='input is primary'
-            placeholder='Enter your value here...'
-            type='number'
-            value={value}
-            onChange={this.handleChange}
-          />
-        </div>
-        <p className='help'>{this.props.description}</p>
-      </div>
-    )
-  }
-}
-
-// TODO: reimplement this...
-const generateUserInputRows = () => Object.keys(userInputsData).map(key => (
-  <ValueInput
-    key={key}
-    name={userInputsData[key].name}
-    description={userInputsData[key].description}
-    onPropChange={this.handlePropChange}
-  />
-))
 
 // Warnings ignored due to https://reactjs.org/blog/2017/09/26/react-v16.0.html
 class App extends Component {
