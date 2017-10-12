@@ -2,130 +2,6 @@
 
 import React, { Component } from 'react'
 
-const data = {
-    earnings: {
-        title: 'Earnings',
-        description: 'Include all wages, salaries, tips, bonuses, etc.',
-    },
-    before: {
-        title: 'Pre-tax',
-        description: '401(a), 401(k), 403(b), 457, 529, HSA, IRA, TSP, etc. ',
-    },
-    after: {
-        title: 'After-tax',
-        description: 'Roth 401(k), Roth 403(b), Roth 457(b), Roth IRA, etc.',
-    },
-    deductions: {
-        title: 'Deductions',
-        description: '$6,350 single, $9,350 head of household, $12,700 married'
-    },
-    exemptions: {
-        title: 'Exemptions',
-        description: '$4,050',
-    },
-}
-
-class Input extends Component {
-    onChange = (e) => {
-        this.setState({ value: e.target.value })
-        this.props.onChange(e.target.value)
-    }
-
-    render() {
-        return (
-            <div className='field'>
-                <label className='label'>{ this.props.title }</label>
-                <div className='control has-icons-left'>
-                <span className='icon is-small is-left'><i className='fa fa-money'></i></span>
-                    <input className='input is primary'
-                        name='amount'
-                        type='number'
-                        placeholder='Input...'
-                        value={ this.props.propsValue }
-                        onChange={ this.onChange }
-                    />
-                </div>
-                <p className='help'>{ this.props.description }</p>
-            </div>
-        )
-    }
-}
-
-// const Inputs = () => Object.keys(data).map(key => (
-//   <Input
-//     key={key}
-//     title={ data[key].title }
-//     description={ data[key].description }
-//   />
-// ))
-
-class Inputs extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            earnings: '',
-            before: '',
-            after: '',
-            deductions: '',
-            exemptions: '',
-        }
-    }
-
-    handleEarningsChange = (value) => { this.setState({ earnings: value}) }
-    handleBeforeChange = (value) => { this.setState({ before: value}) }
-    handleAfterChange = (value) => { this.setState({ after: value}) }
-    handleDeductionsChange = (value) => { this.setState({ deductions: value}) }
-    handleExemptionsChange = (value) => { this.setState({ exemptions: value}) }
-
-    render() {
-        return [
-            <h2 className='title is-2'>Your variables</h2>,
-            <div className='columns'>
-                <div className='column'>
-                    <Input
-                        title={ data['earnings'].title }
-                        description={ data['earnings'].description }
-                        propsValue={ this.state.earnings }
-                        onChange={ this.handleEarningsChange }
-                    />
-                </div>
-                <div className='column'>
-                    <Input
-                        title={ data['before'].title }
-                        description={ data['before'].description }
-                        propsValue={ this.state.before }
-                        onChange={ this.handleBeforeChange }
-                    />
-                </div>
-                <div className='column'>
-                    <Input
-                        title={ data['after'].title }
-                        description={ data['after'].description }
-                        propsValue={ this.state.after }
-                        onChange={ this.handleAfterChange }
-                    />
-                </div>
-                <div className='column'>
-                    <Input
-                        title={ data['deductions'].title }
-                        description={ data['deductions'].description }
-                        propsValue={ this.state.deductions }
-                        onChange={ this.handleDeductionsChange }
-                    />
-                </div>
-                <div className='column'>
-                    <Input
-                        title={ data['exemptions'].title }
-                        description={ data['exemptions'].description }
-                        propsValue={ this.state.exemptions }
-                        onChange={ this.handleExemptionsChange }
-                    />
-                </div>
-            </div>,
-        ]
-    }
-}
-
 const Header = () => [
     <h1 className='title is-1'>Simple finance</h1>,
     <p className='subtitle is-1'>A financial calculator for the rest of us</p>,
@@ -133,7 +9,103 @@ const Header = () => [
     <br/>,
 ]
 
-const Outputs = () => [
+const ControlledInput = (props) => (
+    <div className='field'>
+        <label className='label'>{props.bulmaTitle}</label>
+        <div className='control has-icons-left'>
+            <span className='icon is-small is-left'>
+                <i className='fa fa-money'></i>
+            </span>
+            <div className='field'>
+                <input
+                    name={props.controlledName}
+                    type={props.controlledType}
+                    value={props.controlledValue}
+                    onChange={props.controlledOnChange}
+                    className='input is primary'
+                />
+            </div>
+        </div>
+        <p className='help'>{props.bulmaDescription}</p>
+    </div>
+
+)
+
+class Form extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      earnings : '',
+      before : '',
+      after: '',
+      deductions: '',
+      exemptions: '',
+    }
+    this.onChange = this.onChange.bind(this)
+  }
+  onChange(e) {
+    let newText = e.target.value
+    this.setState({[e.target.name] : newText})
+  }
+  render() {
+    return (
+        <div className='columns'>
+            <div className='column'>
+                <ControlledInput
+                    controlledName='earnings'
+                    controlledType='text'
+                    controlledValue={this.state.earnings}
+                    controlledOnChange={this.onChange}
+                    bulmaTitle='Earnings'
+                    bulmaDescription='Include all wages, salaries, tips, bonuses, etc.'
+                />
+            </div>
+            <div className='column'>
+                <ControlledInput
+                    controlledName='before'
+                    controlledType='text'
+                    controlledValue={this.state.before}
+                    controlledOnChange={this.onChange}
+                    bulmaTitle='Tax deferred'
+                    bulmaDescription='401(a), 401(k), 403(b), 457, 529, HSA, IRA, TSP, etc. '
+                />
+            </div>
+            <div className='column'>
+                <ControlledInput
+                    controlledName='after'
+                    controlledType='text'
+                    controlledValue={this.state.after}
+                    controlledOnChange={this.onChange}
+                    bulmaTitle='Savings'
+                    bulmaDescription='Roth 401(k), Roth 403(b), Roth 457(b), Roth IRA, etc.'
+                />
+            </div>
+            <div className='column'>
+                <ControlledInput
+                    controlledName='deductions'
+                    controlledType='text'
+                    controlledValue={this.state.deductions}
+                    controlledOnChange={this.onChange}
+                    bulmaTitle='Deductions'
+                    bulmaDescription='$6,350 single, $9,350 head of household, $12,700 married'
+                />
+            </div>
+            <div className='column'>
+                <ControlledInput
+                    controlledName='exemptions'
+                    controlledType='text'
+                    controlledValue={this.state.exemptions}
+                    controlledOnChange={this.onChange}
+                    bulmaTitle='Exemptions'
+                    bulmaDescription='$4,050'
+                />
+            </div>
+        </div>
+    )
+  }
+}
+
+const Results = () => [
     <h2 className='title is-2'>Your predicted metrics</h2>,
     <p>According to my super smart computer brain...</p>,
     <br/>,
@@ -159,14 +131,10 @@ const Outputs = () => [
     </ul>,
 ]
 
-class Body extends Component {
-    render() {
-        return [
-            <Inputs />,
-            <Outputs />,
-        ]
-    }
-}
+const Body = () => [
+    <Form />,
+    <Results />,
+]
 
 const Footer = () =>
     <footer className='footer'>
@@ -181,6 +149,7 @@ class App extends Component {
     render() {
         return [
             <Header />,
+            <h2 className='title is-2'>Your variables</h2>,
             <Body />,
             <Footer />,
         ]
