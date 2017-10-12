@@ -71,11 +71,11 @@ class Inputs extends Component {
         }
     }
 
-    _handleEarningsChange = (value) => { this.setState({ earnings: value}) }
-    _handleBeforeChange = (value) => { this.setState({ before: value}) }
-    _handleAfterChange = (value) => { this.setState({ after: value}) }
-    _handleDeductionsChange = (value) => { this.setState({ deductions: value}) }
-    _handleExemptionsChange = (value) => { this.setState({ exemptions: value}) }
+    handleEarningsChange = (value) => { this.setState({ earnings: value}) }
+    handleBeforeChange = (value) => { this.setState({ before: value}) }
+    handleAfterChange = (value) => { this.setState({ after: value}) }
+    handleDeductionsChange = (value) => { this.setState({ deductions: value}) }
+    handleExemptionsChange = (value) => { this.setState({ exemptions: value}) }
 
     render() {
         return [
@@ -86,7 +86,7 @@ class Inputs extends Component {
                         title={ data['earnings'].title }
                         description={ data['earnings'].description }
                         propsValue={ this.state.earnings }
-                        onChange={ this._handleEarningsChange }
+                        onChange={ this.handleEarningsChange }
                     />
                 </div>
                 <div className='column'>
@@ -94,7 +94,7 @@ class Inputs extends Component {
                         title={ data['before'].title }
                         description={ data['before'].description }
                         propsValue={ this.state.before }
-                        onChange={ this._handleBeforeChange }
+                        onChange={ this.handleBeforeChange }
                     />
                 </div>
                 <div className='column'>
@@ -102,7 +102,7 @@ class Inputs extends Component {
                         title={ data['after'].title }
                         description={ data['after'].description }
                         propsValue={ this.state.after }
-                        onChange={ this._handleAfterChange }
+                        onChange={ this.handleAfterChange }
                     />
                 </div>
                 <div className='column'>
@@ -110,7 +110,7 @@ class Inputs extends Component {
                         title={ data['deductions'].title }
                         description={ data['deductions'].description }
                         propsValue={ this.state.deductions }
-                        onChange={ this._handleDeductionsChange }
+                        onChange={ this.handleDeductionsChange }
                     />
                 </div>
                 <div className='column'>
@@ -118,7 +118,7 @@ class Inputs extends Component {
                         title={ data['exemptions'].title }
                         description={ data['exemptions'].description }
                         propsValue={ this.state.exemptions }
-                        onChange={ this._handleExemptionsChange }
+                        onChange={ this.handleExemptionsChange }
                     />
                 </div>
             </div>,
