@@ -40,11 +40,6 @@ const MoneyInput = props =>
 const TitleField = props =>
 	<label className='label'>{props.bulmaTitle}</label>
 
-const MoneyField = props =>
-	<div className='field'>
-		<Input {...props} />
-	</div>
-
 const DescriptionField = props =>
 	<p className='help'>{props.bulmaDescription}</p>
 
@@ -164,8 +159,8 @@ const Footer = () =>
 	</footer>
 
 const footer =
-	<div
-		><p>
+	<div>
+		<p>
 			<strong>Simple finance</strong> by <a href='https://github.com/mcaputto'>mcto</a>
 		</p>
 		<p>
@@ -181,10 +176,11 @@ const footer =
 		</p>
 	</div>
 
-const App = () => [
-		<Header />,
-		<Body />,
-		<Footer />,
-	]
+const App = () =>
+	<div>
+		<Header />
+		<Body />
+		<Footer />
+	</div>
 
 export default App
