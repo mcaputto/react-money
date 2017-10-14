@@ -39,7 +39,7 @@ class Body extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            gross_income : '',
+            grossIncome : '',
             before : '',
             after: '',
             deductions: '',
@@ -58,9 +58,9 @@ class Body extends Component {
                 <div className='columns'>
                     <div className='column'>
                         <ControlledInput
-                            controlledName='gross_income'
+                            controlledName='grossIncome'
                             controlledType='text'
-                            controlledValue={this.state.gross_income}
+                            controlledValue={this.state.grossIncome}
                             controlledOnChange={this.onChange}
                             bulmaTitle='Gross income'
                             bulmaDescription='Include all wages, salaries, tips, bonuses, etc.'
