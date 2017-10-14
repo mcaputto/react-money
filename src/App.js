@@ -1,50 +1,66 @@
-// TODO: validateInput() -> only accept positive values
-
 import React, { Component } from 'react'
+
+const title =
+	<p className="title is-1">Simple finance</p>
+
+const subtitle =
+	<p className="subtitle is-3">A financial calculator for the rest of us</p>
 
 const Header = () =>
 	<div>
-		<p className="title is-1">Simple finance</p>
-		<p className="subtitle is-3">A financial calculator for the rest of us</p>
+		{title}
+		{subtitle}
 	</div>
+
+const introduction =
+	<p>Hi, I'm a computer program running in your browser. All calculations are
+	being performed client-side using your browser's JavaScript interpreter.
+	Absolutely no data is being stored online. In fact, you could turn off your
+	internet connection, right now, without any interruptions to my
+	functionality. I'm here to help you learn about your finances... please
+	fill out the text forms below to see what I can do!</p>
 
 const Introduction = () =>
 	<div>
 		<br/>
-			<p>
-				Hi, I'm a computer program running in your browser. All
-				calculations are being performed client-side using your
-				browser's JavaScript interpreter. Absolutely no data is being
-				stored online. In fact, you could turn off your internet
-				connection, right now, without any interruptions to my
-				functionality. I'm here to help you learn about your
-				finances... please fill out the text forms below to see what I
-				can do!
-			</p>
+			{introduction}
 		<br/>
 	</div>
 
-const ControlledInput = props => (
+const MoneyInput = props =>
+	<p className='control has-icons-left'>
+		<span className='icon is-small is-left'>
+			<i className='fa fa-money'></i>
+		</span>
+		<Input {...props} />
+	</p>
+
+const TitleField = props =>
+	<label className='label'>{props.bulmaTitle}</label>
+
+const MoneyField = props =>
 	<div className='field'>
-		<label className='label'>{props.bulmaTitle}</label>
-		<div className='control has-icons-left'>
-			<span className='icon is-small is-left'>
-				<i className='fa fa-money'></i>
-			</span>
-			<div className='field'>
-				<input
-					name={props.controlledName}
-					type={props.controlledType}
-					value={props.controlledValue}
-					onChange={props.controlledOnChange}
-					className='input is primary'
-				/>
-			</div>
-		</div>
-		<p className='help'>{props.bulmaDescription}</p>
+		<Input {...props} />
 	</div>
 
-)
+const DescriptionField = props =>
+	<p className='help'>{props.bulmaDescription}</p>
+
+const Input = props =>
+	<input
+		name={props.controlledName}
+		type={props.controlledType}
+		value={props.controlledValue}
+		onChange={props.controlledOnChange}
+		className='input is primary'
+	/>
+
+const ControlledInput = props =>
+	<div className='field'>
+		<TitleField {...props} />
+		<MoneyInput {...props} />
+		<DescriptionField {...props} />
+	</div>
 
 class Form extends Component {
  	constructor(props) {
@@ -144,7 +160,6 @@ const Footer = () =>
 			</div>
 		</div>
 	</footer>
-
 
 const footer =
 	<div
