@@ -38,10 +38,14 @@ const MoneyInput = props =>
 	</p>
 
 const TitleField = props =>
-	<label className='label'>{props.bulmaTitle}</label>
+	<label className='label'>
+		{props.bulmaTitle}
+	</label>
 
 const DescriptionField = props =>
-	<p className='help'>{props.bulmaDescription}</p>
+	<p className='help'>
+		{props.bulmaDescription}
+	</p>
 
 const Input = props =>
 	<input
