@@ -24,7 +24,7 @@ const Introduction = () =>
 		<br/>
 	</div>
 
-const ControlledInput = (props) => (
+const ControlledInput = props => (
 	<div className='field'>
 		<label className='label'>{props.bulmaTitle}</label>
 		<div className='control has-icons-left'>
@@ -140,33 +140,35 @@ const Footer = () =>
 	<footer className='footer'>
 		<div className='container'>
 			<div className='content has-text-centered'>
-				<p>
-					<strong>Simple finance</strong> by <a href='https://github.com/mcaputto'>mcto</a>
-				</p>
-				<p>
-					Built using&nbsp;
-					<a href='https://reactjs.org'>React</a>&nbsp;
-					<a href='http://babeljs.io'>Babel</a>&nbsp;
-					<a href='http://www.ecma-international.org/ecma-262/6.0/index.html'>ES6</a>&nbsp;
-					<a href='https://eslint.org'>ESLint</a>&nbsp;
-					<a href='https://nodejs.org/en/'>Node</a>&nbsp;
-					<a href='https://www.npmjs.com'>NPM</a>&nbsp;
-					<a href='https://yarnpkg.com/en/'>Yarn</a>&nbsp;
-					<a href='https://webpack.github.io/'>Webpack</a>&nbsp;
-				</p>
+				{footer}
 			</div>
 		</div>
 	</footer>
 
-class App extends Component {
-	render() {
-		return [
-			<Header />,
-			<Introduction />,
-			<Form />,
-			<Footer />,
-		]
-	}
-}
+
+const footer =
+	<div
+		><p>
+			<strong>Simple finance</strong> by <a href='https://github.com/mcaputto'>mcto</a>
+		</p>
+		<p>
+			Built using&nbsp;
+			<a href='https://reactjs.org'>React</a>&nbsp;
+			<a href='http://babeljs.io'>Babel</a>&nbsp;
+			<a href='http://www.ecma-international.org/ecma-262/6.0/index.html'>ES6</a>&nbsp;
+			<a href='https://eslint.org'>ESLint</a>&nbsp;
+			<a href='https://nodejs.org/en/'>Node</a>&nbsp;
+			<a href='https://www.npmjs.com'>NPM</a>&nbsp;
+			<a href='https://yarnpkg.com/en/'>Yarn</a>&nbsp;
+			<a href='https://webpack.github.io/'>Webpack</a>&nbsp;
+		</p>
+	</div>
+
+const App = () => [
+		<Header />,
+		<Introduction />,
+		<Form />,
+		<Footer />,
+	]
 
 export default App
