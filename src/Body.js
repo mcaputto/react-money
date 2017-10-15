@@ -110,13 +110,13 @@ class Body extends Component {
                 <div className="columns">
                     <div className="column">
                         <p className='title is-3'>Your predicted metrics</p>
-                        <p>Your <strong>adjusted gross income</strong> is ______ and your <strong>taxable income</strong> is: ______ </p>
+                        <p>Your <strong>adjusted gross income</strong> is <span className="is-size-3">{this.state.grossIncome - this.state.deductions - this.state.exemptions}</span> and your <strong>taxable income</strong> is <span className="is-size-3">{this.state.grossIncome - this.state.deductions - this.state.exemptions - this.state.before}</span>.</p>
                         <br/>
                         <p className="subtitle is-4">Gross income</p>
-                        <p>As a percentage of your gross income, you paid ______ in taxes, saved ______, and spent ______.</p>
+                        <p>As a percentage of your gross income, you paid <span className="is-size-3">0</span> in taxes, saved <span className="is-size-3">0</span>, and spent <span className="is-size-3">0</span>.</p>
                         <br/>
                         <p className="subtitle is-4">Net income</p>
-                        <p>As a percentage of your net income, you saved ______ and spent ______.</p>
+                        <p>As a percentage of your net income, you saved <span className="is-size-3">0</span> and spent <span className="is-size-3">0</span>.</p>
                         <br/>
                     </div>
                 </div>
