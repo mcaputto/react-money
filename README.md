@@ -1,4 +1,4 @@
-# Simple finance [![Build Status](https://travis-ci.com/mcaputto/react-money.svg?token=4Utmu3xHdR7ZqfkGe3mq&branch=master)](https://travis-ci.com/mcaputto/react-money)
+# Simple finance [![Build Status](https://travis-ci.com/mcaputto/simple-finance.svg?token=4Utmu3xHdR7ZqfkGe3mq&branch=master)](https://travis-ci.com/mcaputto/react-money)
 
 An SPA proof-of-concept. Designed to help you with your finances.
 
