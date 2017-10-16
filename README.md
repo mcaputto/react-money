@@ -2,11 +2,6 @@
 
 An SPA proof-of-concept. Designed to help you with your finances.
 
-## Screenshots
-
-* [iPad Pro](https://i.imgur.com/SvAyCZX.png)
-* [iPhone Plus](https://i.imgur.com/f4B8wBf.png)
-
 ## Installation
 
 ```sh
