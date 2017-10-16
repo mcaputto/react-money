@@ -1,8 +1,8 @@
 import React from 'react'
 
-import Header from '../containers/Header'
+import Header from '../components/Header'
 import Calculator from '../containers/Calculator'
-import Footer from '../containers/Footer'
+import Footer from '../components/Footer'
 
 
 const App = () =>
