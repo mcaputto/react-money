@@ -1,14 +1,14 @@
 import React from 'react'
 
 import Header from '../containers/Header'
-import Body from '../containers/Body'
+import Calculator from '../containers/Calculator'
 import Footer from '../containers/Footer'
 
 
 const App = () =>
     <div>
         <Header />
-        <Body />
+        <Calculator />
         <Footer />
     </div>
 
