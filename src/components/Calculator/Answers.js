@@ -1,6 +1,6 @@
 import React from 'react'
 
-import * as util from './Util.js'
+import * as util from '../Util.js'
 
 const AGI = props => util.adjustedGrossIncome(props.grossIncome, props.deductions, props.exemptions)
 const TI = props => util.taxable(props.grossIncome, props.before, props.deductions, props.exemptions)
