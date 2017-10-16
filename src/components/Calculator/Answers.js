@@ -8,11 +8,11 @@ const TI = props => util.taxable(props.grossIncome, props.before, props.deductio
 const Answers = props =>
     <div>
         <div className='columns'>
-            <div className='column'>Your <strong>adjusted gross income</strong> is</div>
+            <div className='column'>Your adjusted gross income is</div>
             <div className='column'><AGI {...props} /></div>
         </div>
         <div className='columns'>
-            <div className='column'>Your <strong>taxable income</strong> is</div>
+            <div className='column'>Your taxable income is</div>
             <div className='column'>  <TI {...props} /></div>
         </div>
         <div className='columns'>
@@ -35,6 +35,7 @@ const Answers = props =>
             <div className='column'>As a percentage of your net income, yasdfasdou spent</div>
             <div className='column'>0</div>
         </div>
+        <br />
     </div>
 
 export default Answers
