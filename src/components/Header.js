@@ -2,32 +2,24 @@ import React from 'react'
 
 
 const title =
-    <p className="title is-1">
+    <h1 class='title'>
         Simple finance
-    </p>
+    </h1>
 
 const subtitle =
-    <p className="subtitle is-3">
+    <h2 className='subtitle'>
         A financial calculator for the rest of us
-    </p>
+    </h2>
 
-const introduction =
-    <p>
-        Hi, I'm a computer program running in your browser. All calculations
-        are being performed client-side using your browser's JavaScript
-        interpreter. Absolutely no data is being stored online. In fact, you
-        could turn off your internet connection, right now, without any
-        interruptions to my functionality. I'm here to help you learn about
-        your finances... please fill out the text forms below to see what I can
-        do!
-    </p>
 
 const Header = () =>
-    <div>
-        {title}
-        {subtitle}
-        {introduction}
-        <br/>
+    <div className='hero is-primary'>
+        <div className='hero-body'>
+            <div class='container'>
+                {title}
+                {subtitle}
+            </div>
+        </div>
     </div>
 
 

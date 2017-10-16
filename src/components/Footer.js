@@ -13,15 +13,15 @@ const CenteredFooter = () =>
         {footer}
     </div>
 
-const Footer = () =>
-    <footer className='footer'>
-        <FooterContainer />
-    </footer>
-
 const FooterContainer = () =>
     <div className='container'>
         <CenteredFooter />
     </div>
+
+const Footer = () =>
+    <footer className='footer'>
+        <FooterContainer />
+    </footer>
 
 
 export default Footer

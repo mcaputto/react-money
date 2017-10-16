@@ -6,7 +6,8 @@ const AGI = props => util.adjustedGrossIncome(props.grossIncome, props.deduction
 const TI = props => util.taxable(props.grossIncome, props.before, props.deductions, props.exemptions)
 
 const Answers = props =>
-    <div>
+    <div className='section'>
+        <h1 className='title'>Your predicted metrics</h1>
         <div className='columns'>
             <div className='column'>Your adjusted gross income is</div>
             <div className='column'><AGI {...props} /></div>
@@ -35,7 +36,6 @@ const Answers = props =>
             <div className='column'>As a percentage of your net income, yasdfasdou spent</div>
             <div className='column'>0</div>
         </div>
-        <br />
     </div>
 
 export default Answers

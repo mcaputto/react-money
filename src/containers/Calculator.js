@@ -23,7 +23,6 @@ class Calculator extends Component {
     render() {
         return (
             <div>
-                <p className='title is-3'>Your personal variables</p>
                 <Questions
                     grossIncome={this.state.grossIncome}
                     before={this.state.before}
@@ -32,7 +31,6 @@ class Calculator extends Component {
                     exemptions={this.state.exemptions}
                     onChange={this.onChange}
                 />
-                <p className='title is-3'>Your predicted metrics</p>
                 <Answers
                     grossIncome={this.state.grossIncome}
                     before={this.state.before}
