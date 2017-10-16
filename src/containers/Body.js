@@ -1,39 +1,7 @@
 import React, { Component } from 'react'
 
+import ControlledInput from '../components/Input'
 
-const MoneyInput = props =>
-    <p className='control has-icons-left'>
-        <span className='icon is-small is-left'>
-            <i className='fa fa-money'></i>
-        </span>
-        <Input {...props} />
-    </p>
-
-const TitleField = props =>
-    <label className='label'>
-        {props.bulmaTitle}
-    </label>
-
-const DescriptionField = props =>
-    <p className='help'>
-        {props.bulmaDescription}
-    </p>
-
-const Input = props =>
-    <input
-        name={props.controlledName}
-        type={props.controlledType}
-        value={props.controlledValue}
-        onChange={props.controlledOnChange}
-        className='input is primary'
-    />
-
-const ControlledInput = props =>
-    <div className='field'>
-        <TitleField {...props} />
-        <MoneyInput {...props} />
-        <DescriptionField {...props} />
-    </div>
 
 class Body extends Component {
     constructor(props) {
@@ -59,7 +27,7 @@ class Body extends Component {
                     <div className='column'>
                         <ControlledInput
                             controlledName='grossIncome'
-                            controlledType='text'
+                            controlledType='number'
                             controlledValue={this.state.grossIncome}
                             controlledOnChange={this.onChange}
                             bulmaTitle='Gross income'
@@ -69,7 +37,7 @@ class Body extends Component {
                     <div className='column'>
                         <ControlledInput
                             controlledName='before'
-                            controlledType='text'
+                            controlledType='number'
                             controlledValue={this.state.before}
                             controlledOnChange={this.onChange}
                             bulmaTitle='Tax deferred'
@@ -79,7 +47,7 @@ class Body extends Component {
                     <div className='column'>
                         <ControlledInput
                             controlledName='after'
-                            controlledType='text'
+                            controlledType='number'
                             controlledValue={this.state.after}
                             controlledOnChange={this.onChange}
                             bulmaTitle='Savings'
@@ -89,7 +57,7 @@ class Body extends Component {
                     <div className='column'>
                         <ControlledInput
                             controlledName='deductions'
-                            controlledType='text'
+                            controlledType='number'
                             controlledValue={this.state.deductions}
                             controlledOnChange={this.onChange}
                             bulmaTitle='Deductions'
@@ -99,7 +67,7 @@ class Body extends Component {
                     <div className='column'>
                         <ControlledInput
                             controlledName='exemptions'
-                            controlledType='text'
+                            controlledType='number'
                             controlledValue={this.state.exemptions}
                             controlledOnChange={this.onChange}
                             bulmaTitle='Exemptions'

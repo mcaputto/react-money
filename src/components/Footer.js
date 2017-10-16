@@ -4,7 +4,7 @@ import React, { Component } from 'react'
 const footer =
     <div>
         <p>
-            <strong>Simple finance</strong> by <a href='https://github.com/mcaputto'>mcto</a>
+            <strong>Simple finance</strong> by <a href='https://github.com/mcaputto'>mcaputto</a>
         </p>
     </div>
 
@@ -22,5 +22,6 @@ const FooterContainer = () =>
     <div className='container'>
         <CenteredFooter />
     </div>
+
 
 export default Footer
