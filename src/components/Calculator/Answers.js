@@ -6,7 +6,6 @@ const AGI = props => util.adjustedGrossIncome(props.grossIncome, props.deduction
 const TI = props => util.taxable(props.grossIncome, props.before, props.deductions, props.exemptions)
 const Fica = props => util.ficaTaxes(props.grossIncome, .062, 0.0145)
 
-
 const Answers = props =>
     <div className='section'>
         <h1 className='title'>Your predicted metrics</h1>

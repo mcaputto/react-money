@@ -1,6 +1,7 @@
 export const medicare = .0145
 export const ssi = .062
 
+
 export function percent (numerator, denominator) {
     return 100 * (numerator / denominator)
 }
@@ -42,6 +43,7 @@ export function discretionary_spend (grossIncome, retirementPortion, governmentP
 export function netIncome (grossIncome, ficaTaxes, fedTaxes, stateTaxes) {
     return grossIncome - ficaTaxes - fedTaxes - stateTaxes}
 
+
 export function fedTaxes (taxableIncome) {
     if (taxableIncome >= 0 && taxableIncome < 9325) {
         return .1 * taxableIncome
@@ -58,8 +60,4 @@ export function fedTaxes (taxableIncome) {
     } else if (taxableIncome >= 418400 && taxableIncome < 121505) {
         return .25 + 39.6 * (taxableIncome - 418400)
     } else return null
-}
-
-export function stateTaxes (grossIncome) {
-    return
 }
