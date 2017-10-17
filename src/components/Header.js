@@ -2,7 +2,7 @@ import React from 'react'
 
 
 const title =
-    <h1 class='title'>
+    <h1 className='title'>
         Simple finance
     </h1>
 
@@ -15,7 +15,7 @@ const subtitle =
 const Header = () =>
     <div className='hero is-primary'>
         <div className='hero-body'>
-            <div class='container'>
+            <div className='container'>
                 {title}
                 {subtitle}
             </div>
