@@ -13,14 +13,14 @@ const subtitle =
 
 
 const Header = () =>
-    <div className='hero is-primary'>
+    <section className='hero'>
         <div className='hero-body'>
             <div className='container'>
                 {title}
                 {subtitle}
             </div>
         </div>
-    </div>
+    </section>
 
 
 export default Header

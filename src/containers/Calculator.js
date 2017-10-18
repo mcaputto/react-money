@@ -22,7 +22,7 @@ class Calculator extends Component {
     }
     render() {
         return (
-            <div>
+            <div className='section'>
                 <Questions
                     grossIncome={this.state.grossIncome}
                     before={this.state.before}

@@ -3,9 +3,23 @@ import React from 'react'
 import ControlledInput from '../Calculator/Input'
 
 
+const introduction =
+    <p>
+        Hi, I'm a computer program running in your browser. All calculations
+        are being performed client-side using your browser's JavaScript
+        interpreter. Absolutely no data is being stored online. In fact, you
+        could turn off your internet connection, right now, without any
+        interruptions to my functionality. I'm here to help you learn about
+        your finances... please fill out the text forms below to see what I can
+        do!
+        <br/>
+        <br/>
+    </p>
+
+
 const Questions = props =>
-    <div className='section'>
-        <h1 className='title'>Your personal variables</h1>
+    <div className='container'>
+        {introduction}
         <div className='columns'>
             <div className='column'>
                 <ControlledInput
@@ -58,6 +72,7 @@ const Questions = props =>
                 />
             </div>
         </div>
+        <br/>
     </div>
 
 
