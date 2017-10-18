@@ -19,43 +19,51 @@ const Answers = props => {
     let taxAmount = fedTaxes + stateTaxes
     let discretionaryAmount = grossIncome - retirementAmount - taxAmount
 
+    let _agi = util.formatter.format(agi)
+    let _taxableIncome = util.formatter.format(taxableIncome)
+    let _fica = util.formatter.format(fica)
+    let _fedTaxes = util.formatter.format(fedTaxes)
+    let _stateTaxes = util.formatter.format(stateTaxes)
+    let _retirementAmount = util.formatter.format(retirementAmount)
+    let _taxAmount = util.formatter.format(taxAmount)
+    let _discretionaryAmount = util.formatter.format(discretionaryAmount)
+
     return (
-        <div className='container'>
+        <div>
             <div className='columns'>
                 <div className='column'>Your adjusted gross income</div>
-                <div className='column'>{agi}</div>
+                <div className='column'>{_agi}</div>
             </div>
             <div className='columns'>
                 <div className='column'>Your taxable income</div>
-                <div className='column'>{taxableIncome}</div>
+                <div className='column'>{_taxableIncome}</div>
             </div>
             <div className='columns'>
                 <div className='column'>FICA tax</div>
-                <div className='column'>{fica}</div>
+                <div className='column'>{_fica}</div>
             </div>
             <div className='columns'>
                 <div className='column'>Federal income tax</div>
-                <div className='column'>{fedTaxes}</div>
+                <div className='column'>{_fedTaxes}</div>
             </div>
             <div className='columns'>
                 <div className='column'>State income tax</div>
-                <div className='column'>{stateTaxes}</div>
+                <div className='column'>{_stateTaxes}</div>
             </div>
             <div className='columns'>
                 <div className='column'><strong>Total taxes</strong></div>
-                <div className='column'><strong>{taxAmount}</strong></div>
+                <div className='column'><strong>{_taxAmount}</strong></div>
             </div>
             <div className='columns'>
                 <div className='column'><strong>Total savings</strong></div>
-                <div className='column'><strong>{retirementAmount}</strong></div>
+                <div className='column'><strong>{_retirementAmount}</strong></div>
             </div>
             <div className='columns'>
                 <div className='column'><strong>Total spending</strong></div>
-                <div className='column'><strong>{discretionaryAmount}</strong></div>
+                <div className='column'><strong>{_discretionaryAmount}</strong></div>
             </div>
         </div>
     )
 }
-
 
 export default Answers

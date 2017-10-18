@@ -22,22 +22,36 @@ class Calculator extends Component {
     }
     render() {
         return (
-            <div className='section'>
-                <Questions
-                    grossIncome={this.state.grossIncome}
-                    before={this.state.before}
-                    after={this.state.after}
-                    deductions={this.state.deductions}
-                    exemptions={this.state.exemptions}
-                    onChange={this.onChange}
-                />
-                <Answers
-                    grossIncome={this.state.grossIncome}
-                    before={this.state.before}
-                    after={this.state.after}
-                    deductions={this.state.deductions}
-                    exemptions={this.state.exemptions}
-                />
+            <div>
+            <section className='section'>
+                <div className='container'>
+                    <h1 className='title'>
+                        Tell me a few basic things
+                    </h1>
+                    <Questions
+                        grossIncome={this.state.grossIncome}
+                        before={this.state.before}
+                        after={this.state.after}
+                        deductions={this.state.deductions}
+                        exemptions={this.state.exemptions}
+                        onChange={this.onChange}
+                    />
+                </div>
+            </section>
+            <section className='section'>
+                <div className='container'>
+                    <h1 className='title'>
+                        Here is what I found out
+                    </h1>
+                    <Answers
+                        grossIncome={this.state.grossIncome}
+                        before={this.state.before}
+                        after={this.state.after}
+                        deductions={this.state.deductions}
+                        exemptions={this.state.exemptions}
+                    />
+                </div>
+            </section>
             </div>
         );
     }
