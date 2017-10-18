@@ -29,40 +29,32 @@ const Answers = props => {
     let _discretionaryAmount = util.formatter.format(discretionaryAmount)
 
     return (
-        <div>
-            <div className='columns'>
-                <div className='column'>Your adjusted gross income</div>
-                <div className='column'>{_agi}</div>
-            </div>
-            <div className='columns'>
-                <div className='column'>Your taxable income</div>
-                <div className='column'>{_taxableIncome}</div>
-            </div>
-            <div className='columns'>
-                <div className='column'>FICA tax</div>
-                <div className='column'>{_fica}</div>
-            </div>
-            <div className='columns'>
-                <div className='column'>Federal income tax</div>
-                <div className='column'>{_fedTaxes}</div>
-            </div>
-            <div className='columns'>
-                <div className='column'>State income tax</div>
-                <div className='column'>{_stateTaxes}</div>
-            </div>
-            <div className='columns'>
-                <div className='column'><strong>Total taxes</strong></div>
-                <div className='column'><strong>{_taxAmount}</strong></div>
-            </div>
-            <div className='columns'>
-                <div className='column'><strong>Total savings</strong></div>
-                <div className='column'><strong>{_retirementAmount}</strong></div>
-            </div>
-            <div className='columns'>
-                <div className='column'><strong>Total spending</strong></div>
-                <div className='column'><strong>{_discretionaryAmount}</strong></div>
-            </div>
-        </div>
+        <ul>
+            <li>
+                Your adjusted gross income {_agi}
+            </li>
+            <li>
+                Your taxable income {_taxableIncome}
+            </li>
+            <li>
+                FICA tax {_fica}
+            </li>
+            <li>
+                Federal income tax {_fedTaxes}
+            </li>
+            <li>
+                State income tax {_stateTaxes}
+            </li>
+            <li>
+                Total taxes {_taxAmount}
+            </li>
+            <li>
+                Total savings {_retirementAmount}
+            </li>
+            <li>
+                Total spending {_discretionaryAmount}
+            </li>
+        </ul>
     )
 }
 
