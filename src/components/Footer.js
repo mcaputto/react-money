@@ -6,6 +6,9 @@ const footer =
         <p>
             <strong>Simple finance</strong> by <a href='https://github.com/mcaputto'>mcaputto</a>
         </p>
+        <p>
+            Version 0.2.0
+        </p>
     </div>
 
 const CenteredFooter = () =>
