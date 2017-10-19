@@ -32,10 +32,10 @@ const CalculatorAnswers = props => {
         <div className='container'>
             <div className='content'>
                 <h1 className='title'>
-                    My findings
+                    Your findings
                 </h1>
                 <p>
-                    Based on the information you provided, your <strong>adjusted gross income</strong> is {_agi} and your <strong>taxable income</strong> is {_taxableIncome}. You will pay <strong>FICA taxes</strong> of {_fica}, <strong>federal income taxes</strong> of {_fedTaxes}, and <strong>state income taxes</strong> of {_stateTaxes}. The <strong>total taxes</strong> you will pay is {_taxAmount}. Of the remaining money, you have indicated that you will <strong>save</strong> {_retirementAmount}, which leaves a <strong>discretionary spending</strong> of {_discretionaryAmount}.
+                    Based on the information you provided, your <strong>adjusted gross income</strong> is {_agi} and your <strong>taxable income</strong> is {_taxableIncome}. You will pay <strong>FICA taxes</strong> of {_fica}, <strong>federal income taxes</strong> of {_fedTaxes}, and <strong>state income taxes</strong> of {_stateTaxes}. The <strong>total taxes</strong> you will pay are {_taxAmount}. Of the remaining money, you have indicated that you will <strong>save</strong> {_retirementAmount}, which leaves <strong>discretionary spending</strong> of {_discretionaryAmount}.
                 </p>
             </div>
         </div>
