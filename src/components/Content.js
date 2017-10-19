@@ -5,10 +5,11 @@ import Calculator from './Content/Calculator'
 
 
 const Content = () =>
-    <div>
+    <section className='section'>
         <Info />
+        <hr/>
         <Calculator />
-    </div>
+    </section>
 
 
 export default Content

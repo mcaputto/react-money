@@ -31,6 +31,7 @@ class Calculator extends Component {
                     exemptions={this.state.exemptions}
                     onChange={this.onChange}
                 />
+                <hr/>
                 <CalculatorAnswers
                     grossIncome={this.state.grossIncome}
                     before={this.state.before}

@@ -4,8 +4,8 @@ import ControlledInput from './ControlledInput'
 
 
 const CalculatorQuestions = props =>
-    <section className='section'>
-        <div className='container'>
+    <div className='container'>
+        <div className='content'>
             <h1 className='title'>
                 Your parameters
             </h1>
@@ -62,6 +62,6 @@ const CalculatorQuestions = props =>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
 export default CalculatorQuestions

@@ -29,39 +29,16 @@ const CalculatorAnswers = props => {
     let _discretionaryAmount = util.formatter.format(discretionaryAmount)
 
     return (
-        <section className='section'>
-            <div className='container'>
+        <div className='container'>
+            <div className='content'>
                 <h1 className='title'>
                     My findings
                 </h1>
-                <ul>
-                    <li>
-                        Your adjusted gross income {_agi}
-                    </li>
-                    <li>
-                        Your taxable income {_taxableIncome}
-                    </li>
-                    <li>
-                        FICA tax {_fica}
-                    </li>
-                    <li>
-                        Federal income tax {_fedTaxes}
-                    </li>
-                    <li>
-                        State income tax {_stateTaxes}
-                    </li>
-                    <li>
-                        Total taxes {_taxAmount}
-                    </li>
-                    <li>
-                        Total savings {_retirementAmount}
-                    </li>
-                    <li>
-                        Total spending {_discretionaryAmount}
-                    </li>
-                </ul>
+                <p>
+                    Based on the information you provided, your <strong>adjusted gross income</strong> is {_agi} and your <strong>taxable income</strong> is {_taxableIncome}. You will pay <strong>FICA taxes</strong> of {_fica}, <strong>federal income taxes</strong> of {_fedTaxes}, and <strong>state income taxes</strong> of {_stateTaxes}. The <strong>total taxes</strong> you will pay is {_taxAmount}. Of the remaining money, you have indicated that you will <strong>save</strong> {_retirementAmount}, which leaves a <strong>discretionary spending</strong> of {_discretionaryAmount}.
+                </p>
             </div>
-        </section>
+        </div>
     )
 }
 
