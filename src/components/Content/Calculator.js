@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
-import Questions from './Questions'
-import Answers from './Answers'
+import CalculatorQuestions from './CalculatorQuestions'
+import CalculatorAnswers from './CalculatorAnswers'
 
 
 class Calculator extends Component {
@@ -23,35 +23,21 @@ class Calculator extends Component {
     render() {
         return (
             <div>
-            <section className='section'>
-                <div className='container'>
-                    <h1 className='title'>
-                        Tell me a few basic things
-                    </h1>
-                    <Questions
-                        grossIncome={this.state.grossIncome}
-                        before={this.state.before}
-                        after={this.state.after}
-                        deductions={this.state.deductions}
-                        exemptions={this.state.exemptions}
-                        onChange={this.onChange}
-                    />
-                </div>
-            </section>
-            <section className='section'>
-                <div className='container'>
-                    <h1 className='title'>
-                        Here is what I found out
-                    </h1>
-                    <Answers
-                        grossIncome={this.state.grossIncome}
-                        before={this.state.before}
-                        after={this.state.after}
-                        deductions={this.state.deductions}
-                        exemptions={this.state.exemptions}
-                    />
-                </div>
-            </section>
+                <CalculatorQuestions
+                    grossIncome={this.state.grossIncome}
+                    before={this.state.before}
+                    after={this.state.after}
+                    deductions={this.state.deductions}
+                    exemptions={this.state.exemptions}
+                    onChange={this.onChange}
+                />
+                <CalculatorAnswers
+                    grossIncome={this.state.grossIncome}
+                    before={this.state.before}
+                    after={this.state.after}
+                    deductions={this.state.deductions}
+                    exemptions={this.state.exemptions}
+                />
             </div>
         );
     }

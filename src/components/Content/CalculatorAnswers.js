@@ -3,7 +3,7 @@ import React from 'react'
 import * as util from './Util.js'
 
 
-const Answers = props => {
+const CalculatorAnswers = props => {
     let grossIncome = props.grossIncome
     let deductions = props.deductions
     let exemptions = props.exemptions
@@ -29,33 +29,40 @@ const Answers = props => {
     let _discretionaryAmount = util.formatter.format(discretionaryAmount)
 
     return (
-        <ul>
-            <li>
-                Your adjusted gross income {_agi}
-            </li>
-            <li>
-                Your taxable income {_taxableIncome}
-            </li>
-            <li>
-                FICA tax {_fica}
-            </li>
-            <li>
-                Federal income tax {_fedTaxes}
-            </li>
-            <li>
-                State income tax {_stateTaxes}
-            </li>
-            <li>
-                Total taxes {_taxAmount}
-            </li>
-            <li>
-                Total savings {_retirementAmount}
-            </li>
-            <li>
-                Total spending {_discretionaryAmount}
-            </li>
-        </ul>
+        <section className='section'>
+            <div className='container'>
+                <h1 className='title'>
+                    My findings
+                </h1>
+                <ul>
+                    <li>
+                        Your adjusted gross income {_agi}
+                    </li>
+                    <li>
+                        Your taxable income {_taxableIncome}
+                    </li>
+                    <li>
+                        FICA tax {_fica}
+                    </li>
+                    <li>
+                        Federal income tax {_fedTaxes}
+                    </li>
+                    <li>
+                        State income tax {_stateTaxes}
+                    </li>
+                    <li>
+                        Total taxes {_taxAmount}
+                    </li>
+                    <li>
+                        Total savings {_retirementAmount}
+                    </li>
+                    <li>
+                        Total spending {_discretionaryAmount}
+                    </li>
+                </ul>
+            </div>
+        </section>
     )
 }
 
-export default Answers
+export default CalculatorAnswers
