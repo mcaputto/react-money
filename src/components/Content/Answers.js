@@ -1,6 +1,6 @@
 import React from 'react'
 
-import * as util from '../Util.js'
+import * as util from './Util.js'
 
 
 const Answers = props => {

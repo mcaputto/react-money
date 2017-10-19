@@ -1,6 +1,6 @@
 import React from 'react'
 
-import ControlledInput from '../Calculator/Input'
+import ControlledInput from './ControlledInput'
 
 
 const Questions = props =>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
-import Questions from '../components/Calculator/Questions'
-import Answers from '../components/Calculator/Answers'
+import Questions from './Questions'
+import Answers from './Answers'
 
 
 class Calculator extends Component {

@@ -1,7 +1,7 @@
 import React from 'react'
 
-import Info from './Info'
-import Calculator from './Calculator'
+import Info from './Content/Info'
+import Calculator from './Content/Calculator'
 
 const Content = () =>
     <div>

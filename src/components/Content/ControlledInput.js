@@ -1,5 +1,6 @@
 import React from 'react'
 
+import Input from './Input'
 
 const MoneyInput = props =>
     <p className='control has-icons-left'>
@@ -18,15 +19,6 @@ const DescriptionField = props =>
     <p className='help'>
         {props.bulmaDescription}
     </p>
-
-const Input = props =>
-    <input
-        name={props.controlledName}
-        type={props.controlledType}
-        value={props.controlledValue}
-        onChange={props.controlledOnChange}
-        className='input is primary'
-    />
 
 const ControlledInput = props =>
     <div className='field'>

@@ -4,9 +4,6 @@ export const formatter = new Intl.NumberFormat('en-US', {
     minimumFractionDigits: 2,
 })
 
-formatter.format(2500)
-
-
 export const medicare = .0145
 
 export const ssi = .062
