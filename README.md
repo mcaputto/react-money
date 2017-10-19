@@ -2,17 +2,36 @@
 
 An SPA proof-of-concept. Designed to help you with your finances.
 
+[Screenshot](https://imgur.com/eOjNA7H)
+
+![Screenshot on tablet](https://i.imgur.com/UpD7zW9.png)
+
+
 ## Installation
 
 ```sh
 npm install
+```
+
+## Development
+
+To run an active development build:
+
+```sh
 npm start
 ```
 
-Then open [http://localhost:3000/](http://localhost:3000/) to see the app.<br>
-When you’re ready to deploy to production, create a minified bundle with `npm run build`.
+## Production
 
-## Built using
+To deploy for production:
+
+```sh
+npm run build
+```
+
+This will create a minified bundle in `/public`.
+
+**Simple finance** was built using:
 
 * [React](https://reactjs.org)
 * [Babel](http://babeljs.io)
