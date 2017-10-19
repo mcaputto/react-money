@@ -1,11 +1,14 @@
 # Simple finance [![Build Status](https://travis-ci.com/mcaputto/simple-finance.svg?token=4Utmu3xHdR7ZqfkGe3mq&branch=master)](https://travis-ci.com/mcaputto/react-money)
 
-An SPA proof-of-concept. Designed to help you with your finances.
+[Screenshot](https://i.imgur.com/eOjNA7H.png)
 
-[Screenshot](https://imgur.com/eOjNA7H)
-
-![Screenshot on tablet](https://i.imgur.com/UpD7zW9.png)
-
+This is a proof-of-concept application. Tax brackets are hardcoded. The purpose
+behind this project was to learn [React](https://reactjs.org) and associated
+technologies, such as
+[ES6](http://www.ecma-international.org/ecma-262/6.0/index.html),
+[Babel](http://babeljs.io), [ESLint](https://eslint.org),
+[Node](https://nodejs.org/en/), [NPM](https://www.npmjs.com),
+[Yarn](https://yarnpkg.com/en/), and [Webpack](https://webpack.github.io/).
 
 ## Installation
 
@@ -31,13 +34,5 @@ npm run build
 
 This will create a minified bundle in `/public`.
 
-**Simple finance** was built using:
 
-* [React](https://reactjs.org)
-* [Babel](http://babeljs.io)
-* [ES6](http://www.ecma-international.org/ecma-262/6.0/index.html)
-* [ESLint](https://eslint.org)
-* [Node](https://nodejs.org/en/)
-* [NPM](https://www.npmjs.com)
-* [Yarn](https://yarnpkg.com/en/)
-* [Webpack](https://webpack.github.io/)
+*Disclaimer: This application does not provide tax, legal or accounting advice. This application has been prepared for informational purposes only, and is not intended to provide, and should not be relied on for, tax, legal or accounting advice. You should consult your own tax, legal and accounting advisors before engaging in any transaction.*
