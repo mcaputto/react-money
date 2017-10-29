@@ -1,4 +1,4 @@
-# React money [![Build Status](https://travis-ci.com/mcaputto/simple-finance.svg?token=4Utmu3xHdR7ZqfkGe3mq&branch=master)](https://travis-ci.com/mcaputto/react-money)
+# React money [![Build Status](https://travis-ci.org/mcaputto/react-money.svg?branch=master)](https://travis-ci.org/mcaputto/react-money)
 
 [Screenshot](https://i.imgur.com/eOjNA7H.png)
 
