@@ -10,11 +10,14 @@
     "react-dom": "^16.0.0",
     "react-scripts": "1.0.14"
   },
+  "homepage": "http://mcaputto.github.io/react-money",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "devDependencies": {
     "babel-jest": "^21.2.0",
@@ -26,6 +29,7 @@
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-jsx-a11y": "^5.1.1",
     "eslint-plugin-react": "^7.4.0",
+    "gh-pages": "^1.0.0",
     "jest": "^21.2.1",
     "react-test-renderer": "^16.0.0"
   }
