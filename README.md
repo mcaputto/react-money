@@ -1,6 +1,6 @@
 # React money [![Build Status](https://travis-ci.org/mcaputto/react-money.svg?branch=master)](https://travis-ci.org/mcaputto/react-money)
 
-[Screenshot](https://i.imgur.com/eOjNA7H.png)
+[**Demo available here**](http://mcaputto.github.io/react-money)
 
 This is a proof-of-concept application. Tax brackets are hardcoded. The purpose
 behind this project was to learn [React](https://reactjs.org) and associated
