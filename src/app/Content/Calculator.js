@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 
-import ControlledInput from './ControlledInput'
+import CalculatorInput from './CalculatorInput'
 
-import * as util from './Util.js'
+import * as util from '../Util.js'
 
 
 const CalculatorQuestions = props =>
@@ -13,7 +13,7 @@ const CalculatorQuestions = props =>
             </h1>
             <div className='columns'>
                 <div className='column'>
-                    <ControlledInput
+                    <CalculatorInput
                         controlledName='grossIncome'
                         controlledType='number'
                         controlledValue={props.grossIncome}
@@ -23,7 +23,7 @@ const CalculatorQuestions = props =>
                     />
                 </div>
                 <div className='column'>
-                    <ControlledInput
+                    <CalculatorInput
                         controlledName='before'
                         controlledType='number'
                         controlledValue={props.before}
@@ -33,7 +33,7 @@ const CalculatorQuestions = props =>
                     />
                 </div>
                 <div className='column'>
-                    <ControlledInput
+                    <CalculatorInput
                         controlledName='after'
                         controlledType='number'
                         controlledValue={props.after}
@@ -43,7 +43,7 @@ const CalculatorQuestions = props =>
                     />
                 </div>
                 <div className='column'>
-                    <ControlledInput
+                    <CalculatorInput
                         controlledName='deductions'
                         controlledType='number'
                         controlledValue={props.deductions}
@@ -53,7 +53,7 @@ const CalculatorQuestions = props =>
                     />
                 </div>
                 <div className='column'>
-                    <ControlledInput
+                    <CalculatorInput
                         controlledName='exemptions'
                         controlledType='number'
                         controlledValue={props.exemptions}
